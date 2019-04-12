@@ -13,7 +13,18 @@ const server = http.createServer((req, res) => {
       orientation: "portrait",
       format: "Letter",
       type: "pdf",
-      margin: "0"
+      margin: "0",
+      header: {
+        height: "0.2in",
+        contents: {
+          first: "<div class='top-bar'></div>",
+          default: "<header></header>"
+        }
+      },
+      footer: {
+        height: "0.2in",
+        contents: "<footer></footer>"
+      }
     };
 
     pdf.create(html, options).toStream(function(err, stream) {
@@ -22,7 +33,6 @@ const server = http.createServer((req, res) => {
         res.end("Error creating PDF: " + err);
       }
 
-      console.log("PDF created");
       res.statusCode = 200;
       res.setHeader("Content-Type", "application/pdf");
       stream.pipe(res);

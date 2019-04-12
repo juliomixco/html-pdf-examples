@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Simple Invoice Page</title>
     <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,600"
       rel="stylesheet"
     />
     <style type="text/css">
       /* 1. Base Styles
-      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+          –––––––––––––––––––––––––––––––––––––––––––––––––– */
       html {
         box-sizing: border-box;
         font-size: 62.5%;
@@ -26,9 +26,6 @@
       body {
         width: 100%;
         height: 100%;
-      }
-
-      body {
         margin: 0;
         padding: 0;
         font-size: 1.6rem;
@@ -37,42 +34,43 @@
         word-break: break-word;
       }
 
+      .top-bar {
+        height: 100%;
+        background: linear-gradient(304deg, #f37321 70.5%, #212529 0%);
+      }
+
       .page-wrapper {
         width: 100%;
         height: 100%;
-        position: relative;
       }
 
       .container {
         position: relative;
         width: 100%;
         margin: 0 auto;
-        padding: 2rem 6rem;
+        padding: 20px 60px;
         box-sizing: border-box;
       }
 
       /* 2. Headings
-      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+          –––––––––––––––––––––––––––––––––––––––––––––––––– */
       h6 {
-        margin-top: 0;
-        margin-bottom: 1.5rem;
-        font-size: 1.5rem;
-        line-height: 1.6;
+        margin: 0;
+        font-size: 1.2rem;
         letter-spacing: 0;
         text-transform: uppercase;
       }
 
       /* 3. Tables
-      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+          –––––––––––––––––––––––––––––––––––––––––––––––––– */
       table {
         border-collapse: collapse;
-        margin-bottom: 1.5rem;
         table-layout: fixed;
       }
 
       th,
       td {
-        padding: 1rem 1.5rem;
+        padding: 10px;
         text-align: left;
         vertical-align: middle;
         text-overflow: ellipsis;
@@ -89,7 +87,7 @@
       }
 
       /* 4. Utilities
-      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+          –––––––––––––––––––––––––––––––––––––––––––––––––– */
       .full-width {
         width: 100%;
         box-sizing: border-box;
@@ -104,113 +102,137 @@
       }
 
       /* 5. Misc
-      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+          –––––––––––––––––––––––––––––––––––––––––––––––––– */
       hr {
-        margin-top: 1.5rem;
-        margin-bottom: 1.5rem;
         border-width: 0;
         border-top: 1px solid #dee2e6;
       }
 
       /* 6. Clearing
-      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+          –––––––––––––––––––––––––––––––––––––––––––––––––– */
       .container:after,
-      .row:after,
-      .u-cf {
+      .clearfix:after {
         content: "";
         display: table;
         clear: both;
       }
 
       /* 7. Page Sections
-      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+          –––––––––––––––––––––––––––––––––––––––––––––––––– */
       /* 7.1 Header
-      –––––––––––––––––––––––– */
+          –––––––––––––––––––––––– */
       .content__header {
         width: 100%;
         height: auto;
         position: relative;
-        z-index: 1;
         padding: 0;
       }
 
-      .header__border {
-        background: linear-gradient(296deg, #f37321 76.5%, #212529 0%);
-        width: 100%;
-        height: 0.8rem;
-        z-index: 2;
-        left: 1px;
-        position: absolute;
-      }
-
       .header__logo {
-        width: 25%;
-        height: 160px;
-        padding: 35px 45px;
-        background-color: #212529;
+        width: 28%;
+        height: 124px;
+        padding: 20px 40px;
+        background: #212529;
+        background: linear-gradient(301.2deg, #fff 30%, #212529 0%);
         position: relative;
       }
 
-      .header__logo:after {
-        border-color: rgba(0, 0, 0, 0) #fff rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
-        border-style: solid;
-        border-width: 200px 80px 0 0;
-        content: "";
-        position: absolute;
-        right: -2px;
-        bottom: -2px;
-        width: 0;
+      .header__logo img {
+        width: 50px;
+        height: auto;
       }
 
       .header__description {
-        width: 75%;
-        height: 200px;
-        padding: 30px 60px 20px 10px;
+        width: 70%;
+        height: 30px;
         position: relative;
+        padding: 25px 50px 20px 0;
       }
 
-      .description__title {
-        margin: 25px 0 20px 0;
+      .heaader__description .description__title {
+        height: 100%;
       }
 
-      .description__title .title__text path {
+      .header__description .description__title svg {
+        width: 190px;
+      }
+
+      .header__description .description__title .title__text path {
         fill: #343a40;
       }
 
-      .description__details {
-        width: 100%;
-        margin-top: 20px;
-        color: #6c7680;
-        font-size: 1.4rem;
+      .header__description hr {
+        margin: 0;
       }
 
-      .description__details > * {
+      .header__description .description__details {
+        width: 100%;
+        color: #6c7680;
+        font-size: 1rem;
+      }
+
+      .header__description .description__details > * {
         width: 33.33%;
       }
 
-      .order__icons {
-        width: 18px;
+      .header__description .description__details .order__icons {
+        width: 14px;
         height: auto;
-        margin-right: 12px;
+        margin-right: 10px;
         vertical-align: middle;
       }
 
-      .order__icons path {
+      .header__description .description__details .order__icons path {
         fill: #f9a01b;
       }
 
       /* 7.2 Personal Info
-      –––––––––––––––––––––––– */
+          –––––––––––––––––––––––– */
       .content__personal-info {
         color: #868e96;
-        font-size: 1.4rem;
-        padding: 0 6rem;
+        font-size: 1rem;
+        padding: 0 70px;
+        margin-top: 25px;
+        margin-bottom: 5px;
+        width: 100%;
+        box-sizing: border-box;
       }
 
       .personal-info__table td {
-        width: 33.33%;
         overflow: hidden;
         vertical-align: top;
+      }
+
+      /* 1st column */
+      .personal-info__table td:nth-child(1) {
+        width: 25%;
+      }
+
+      /* 2nd column */
+      .personal-info__table td:nth-child(2) {
+        width: 30%;
+        vertical-align: bottom;
+      }
+
+      /* 3rd column */
+      .personal-info__table th:nth-child(3),
+      .personal-info__table td:nth-child(3) {
+        width: 40%;
+        padding-left: 55px;
+      }
+
+      .personal-info__table th {
+        color: #868e96;
+        font-weight: normal;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        padding-bottom: 4px;
+      }
+
+      .personal-info__table tr td div {
+        margin-bottom: 2px;
+        line-height: 18px;
+        padding-right: 10px;
       }
 
       .personal-info__table th:last-child,
@@ -218,41 +240,25 @@
         padding-right: 15px;
       }
 
-      .personal-info__table th {
-        color: #868e96;
-        font-weight: 100;
-        font-size: 1.5rem;
-      }
-
-      .personal-info__table tr td div {
-        margin-bottom: 0.2rem;
-        line-height: 2.5rem;
-        padding-right: 4rem;
-      }
-
-      .personal-info__table
-        tbody
-        tr:first-child
-        td:first-child
-        div:first-child {
+      .personal-info__table td:first-child div:first-child {
         font-weight: 600;
         color: #495057;
-        font-size: 1.6rem;
+        font-size: 1.1rem;
       }
 
       /* 7.3 Summary - Events
-      –––––––––––––––––––––––– */
+          –––––––––––––––––––––––– */
       .event {
         position: relative;
         box-sizing: border-box;
         width: 100%;
         margin: 0 auto;
         color: #6c7680;
-        font-size: 1.6rem;
+        font-size: 1.1rem;
       }
 
       .event__header {
-        padding: 0 6rem 2rem 6rem;
+        padding: 0 60px 20px 60px;
       }
 
       .event__header__title,
@@ -263,14 +269,15 @@
       .event__header__title {
         color: #495057;
         text-transform: capitalize;
+        font-weight: 600;
       }
 
       .event__header__date-category {
-        font-size: 1.1rem;
-        padding-left: 2rem;
+        font-size: 0.9rem;
+        padding-left: 15px;
         color: #868e96;
         text-transform: uppercase;
-        font-weight: 500;
+        font-weight: 600;
       }
 
       .event__table {
@@ -279,12 +286,12 @@
 
       .event table th:last-child,
       .event table td:last-child {
-        padding-right: 6rem;
+        padding-right: 60px;
         text-align: right;
       }
 
       /* 7.3.1 Event Table
-      –––––––––––––––––––––––– */
+          –––––––––––––––––––––––– */
       /* 1st column */
       .event__table th:first-child,
       .event__table td:first-child {
@@ -307,8 +314,8 @@
       }
 
       /* 4th column */
-      .event__table th:nth-child(4),
-      .event__table td:nth-child(4) {
+      .event__table th:last-child,
+      .event__table td:last-child {
         width: 25%;
       }
 
@@ -316,7 +323,7 @@
         color: #495057;
         background-color: #f3f6f9;
         text-transform: uppercase;
-        font-size: 1.4rem;
+        font-size: 1.1rem;
         font-weight: normal;
         position: relative;
       }
@@ -328,7 +335,7 @@
       .event__table thead th:nth-child(2):before {
         border-color: rgba(0, 0, 0, 0) #f3f6f9 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
         border-style: solid;
-        border-width: 43px 20px 0 0;
+        border-width: 36px 20px 0 0;
         content: "";
         position: absolute;
         left: -20px;
@@ -336,63 +343,64 @@
         width: 0;
       }
 
-      .event__table tbody tr:first-child td {
-        padding-top: 3rem;
+      .event__table tr:first-child td {
+        padding-top: 22px;
       }
 
       .event__table tbody hr {
-        margin: 1rem 0;
+        margin: 5px 0;
       }
 
       /* 7.3.2 Event Global Table
-      ––––––––––––––––––––––––––––– */
+          ––––––––––––––––––––––––––––– */
       .event__notes,
       .event__subtotal {
         vertical-align: top;
       }
 
       .event__notes {
-        padding-right: 4rem;
-        line-height: 2.4rem;
+        padding-right: 30px;
+        line-height: 20px;
       }
 
       .event__subtotal div {
-        margin-bottom: 1.5rem;
+        margin-bottom: 10px;
       }
 
       .event__global-table {
         page-break-inside: avoid;
+        margin: 5px 0;
       }
 
       /* 1st column */
       .event__global-table th:first-child,
       .event__global-table td:first-child {
-        padding-left: 6rem;
+        padding-left: 60px;
         width: 50%;
       }
 
       /* 2nd column */
       .event__global-table th:nth-child(2),
       .event__global-table td:nth-child(2) {
-        padding-left: 6rem;
-        width: 20%;
+        padding-left: 50px;
+        width: 25%;
       }
 
       /* 3rd column */
       .event__global-table th:nth-child(3),
       .event__global-table td:nth-child(3) {
-        width: 35%;
+        width: 25%;
       }
 
       .event__global-table th {
         color: #495057;
+        padding: 0;
       }
 
       .event__order-total td {
-        padding: 1rem 0;
-        font-size: 2.3rem;
+        font-size: 1.6rem;
         color: #343a40;
-        font-weight: bold;
+        font-weight: 600;
       }
 
       .event__order-total td:nth-child(2) {
@@ -402,7 +410,7 @@
       .event__order-total td:nth-child(2):before {
         border-color: rgba(0, 0, 0, 0) #f3f6f9 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
         border-style: solid;
-        border-width: 52px 20px 0 0;
+        border-width: 43px 20px 0 0;
         content: "";
         position: absolute;
         left: -20px;
@@ -423,17 +431,19 @@
   <body>
     <div class="page-wrapper">
       <!-- Header -->
-      <header class="container content__header">
-        <div class="header__border"></div>
+      <header class="container content__header clearfix">
         <div class="header__logo pull-left">
-          <img src="../../assets/MH-Logo.png" alt="Miami Heat Logo" />
+          <img
+            src="data:image/png;base64,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
+"
+            alt="Miami Heat Logo"
+          />
         </div>
         <div class="header__description pull-right">
           <div class="description__title">
             <div>
               <svg
                 class="title__text"
-                width="250"
                 viewBox="0 0 288 23"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -534,12 +544,12 @@
 
       <!-- Personal Info -->
       <section class="container content__personal-info">
-        <table class="personal-info__table full-width">
+        <table class="personal-info__table">
           <thead>
             <tr>
               <th>Customer</th>
-              <th>Billing</th>
-              <th>Shipping</th>
+              <th></th>
+              <th>Billing Address</th>
             </tr>
           </thead>
           <tbody>
@@ -552,13 +562,9 @@
               <td>
                 <div>jane@mail.com</div>
                 <div>786-777-4374</div>
-                <div>
-                  601 Biscayne Blvd, Miami, FL 33132, USA
-                </div>
               </td>
               <td>
-                <div>jane@mail.com</div>
-                <div>786-777-4374</div>
+                <div>Jane Williams</div>
                 <div>601 Biscayne Blvd, Miami, FL 33132, USA</div>
               </td>
             </tr>
@@ -569,7 +575,43 @@
       <!-- Summary -->
       <section class="content__summary">
         <div class="container">
-          <h6>Summary</h6>
+          <svg
+            width="60"
+            height="14"
+            viewBox="0 0 83 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9.072 9.634C9.072 10.474 8.958 11.14 8.73 11.632C8.514 12.112 8.076 12.49 7.416 12.766C6.768 13.042 5.856 13.18 4.68 13.18C3.228 13.18 1.938 12.922 0.809998 12.406L1.26 10.318C2.496 10.702 3.648 10.894 4.716 10.894C5.4 10.894 5.844 10.81 6.048 10.642C6.264 10.474 6.372 10.132 6.372 9.616C6.372 9.304 6.36 9.088 6.336 8.968C6.324 8.836 6.24 8.704 6.084 8.572C5.94 8.428 5.748 8.326 5.508 8.266C5.268 8.194 4.884 8.098 4.356 7.978C2.916 7.666 1.998 7.282 1.602 6.826C1.218 6.37 1.026 5.488 1.026 4.18C1.026 2.944 1.314 2.08 1.89 1.588C2.466 1.084 3.558 0.831999 5.166 0.831999C6.366 0.831999 7.578 0.963999 8.802 1.228L8.532 3.496C7.2 3.268 6.09 3.154 5.202 3.154C4.602 3.154 4.206 3.226 4.014 3.37C3.822 3.514 3.726 3.808 3.726 4.252C3.726 4.828 3.81 5.188 3.978 5.332C4.158 5.464 4.722 5.644 5.67 5.872C6.222 6.004 6.678 6.13 7.038 6.25C7.41 6.37 7.728 6.514 7.992 6.682C8.256 6.85 8.454 7.006 8.586 7.15C8.73 7.294 8.838 7.51 8.91 7.798C8.982 8.074 9.024 8.338 9.036 8.59C9.06 8.83 9.072 9.178 9.072 9.634Z"
+              fill="#495057"
+            />
+            <path
+              d="M17.207 1.012H19.907V9.508C19.907 10.54 19.541 11.41 18.809 12.118C18.089 12.826 16.949 13.18 15.389 13.18C13.829 13.18 12.683 12.826 11.951 12.118C11.231 11.41 10.871 10.54 10.871 9.508V1.012H13.571V9.256C13.571 9.76 13.709 10.144 13.985 10.408C14.273 10.66 14.741 10.786 15.389 10.786C16.037 10.786 16.499 10.66 16.775 10.408C17.063 10.144 17.207 9.76 17.207 9.256V1.012Z"
+              fill="#495057"
+            />
+            <path
+              d="M26.8563 11.452L24.7683 6.34L24.5883 13H21.9783L22.4823 1.012H25.1823L28.0623 8.644L30.9423 1.012H33.6423L34.1463 13H31.5363L31.3563 6.34L29.2683 11.452H26.8563Z"
+              fill="#495057"
+            />
+            <path
+              d="M41.0067 11.452L38.9187 6.34L38.7387 13H36.1287L36.6327 1.012H39.3327L42.2127 8.644L45.0927 1.012H47.7927L48.2967 13H45.6867L45.5067 6.34L43.4187 11.452H41.0067Z"
+              fill="#495057"
+            />
+            <path
+              d="M56.7231 1.012L60.3951 13H57.5871L56.9391 10.66H52.9251L52.2771 13H49.4691L53.1231 1.012H56.7231ZM54.9231 3.388L53.5371 8.41H56.2911L54.9231 3.388Z"
+              fill="#495057"
+            />
+            <path
+              d="M68.6742 13L66.0282 9.274H64.4442V13H61.7442V1.012H66.7302C68.1582 1.012 69.1782 1.294 69.7902 1.858C70.4142 2.41 70.7262 3.262 70.7262 4.414V5.89C70.7262 7.402 70.1442 8.404 68.9802 8.896L71.8782 13H68.6742ZM68.0262 5.62V4.666C68.0262 4.21 67.9182 3.886 67.7022 3.694C67.4982 3.502 67.1262 3.406 66.5862 3.406H64.4442V6.934H66.5862C67.1382 6.934 67.5162 6.832 67.7202 6.628C67.9242 6.424 68.0262 6.088 68.0262 5.62Z"
+              fill="#495057"
+            />
+            <path
+              d="M82.2926 1.012L78.5666 9.544V13H75.8666V9.544L72.1406 1.012H74.9666L77.2166 6.574L79.4666 1.012H82.2926Z"
+              fill="#495057"
+            />
+          </svg>
+
           <hr />
         </div>
         <!-- Events -->
@@ -638,14 +680,15 @@
                 </td>
               </tr>
               <tr>
-                <td><!-- For spacing only --></td>
+                <td><!-- For spacing --></td>
               </tr>
               <tr class="event__order-total">
                 <td></td>
                 <td>
                   <svg
                     class="order-total__text"
-                    width="79.87"
+                    width="65"
+                    height="14"
                     viewBox="0 0 81 14"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
