@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Multiple Events Page</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,600"
+      rel="stylesheet"
+    />
+    <style type="text/css">
+      /* 1. Base Styles
+      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+      html {
+        box-sizing: border-box;
+        font-size: 62.5%;
+      }
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-size: 1.6rem;
+        color: #343a40;
+        font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+        word-break: break-word;
+      }
+
+      .top-bar {
+        height: 100%;
+        background: linear-gradient(304deg, #f37321 70.5%, #212529 0%);
+      }
+
+      .page-wrapper {
+        width: 100%;
+        height: 100%;
+      }
+
+      .container {
+        position: relative;
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px 60px;
+        box-sizing: border-box;
+      }
+
+      /* 2. Headings
+      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+      h6 {
+        margin: 0;
+        font-size: 1.2rem;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      /* 3. Tables
+      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+      table {
+        border-collapse: collapse;
+        table-layout: fixed;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        vertical-align: middle;
+        text-overflow: ellipsis;
+      }
+
+      th:first-child,
+      td:first-child {
+        padding-left: 0;
+      }
+
+      th:last-child,
+      td:last-child {
+        padding-right: 0;
+      }
+
+      /* 4. Utilities
+      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+      .full-width {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .pull-right {
+        float: right;
+      }
+
+      .pull-left {
+        float: left;
+      }
+
+      /* 5. Misc
+      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+      hr {
+        border-width: 0;
+        border-top: 1px solid #dee2e6;
+      }
+
+      /* 6. Clearing
+      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+      .container:after,
+      .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      /* 7. Page Sections
+        –––––––––––––––––––––––––––––––––––––––––––––––––– */
+      /* 7.1 Header
+      –––––––––––––––––––––––– */
+      .content__header {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 0;
+      }
+
+      .header__logo {
+        width: 28%;
+        height: 124px;
+        padding: 20px 40px;
+        background: #212529;
+        background: linear-gradient(301.2deg, #fff 30%, #212529 0%);
+        position: relative;
+      }
+
+      .header__logo img {
+        width: 50px;
+        height: auto;
+      }
+
+      .header__description {
+        width: 70%;
+        height: 30px;
+        position: relative;
+        padding: 25px 50px 20px 0;
+      }
+
+      .heaader__description .description__title {
+        height: 100%;
+      }
+
+      .header__description .description__title svg {
+        width: 190px;
+      }
+
+      .header__description .description__title .title__text path {
+        fill: #343a40;
+      }
+
+      .header__description hr {
+        margin: 0;
+      }
+
+      .header__description .description__details {
+        width: 100%;
+        color: #6c7680;
+        font-size: 1rem;
+      }
+
+      .header__description .description__details > * {
+        width: 33.33%;
+      }
+
+      .header__description .description__details .order__icons {
+        width: 14px;
+        height: auto;
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+
+      .header__description .description__details .order__icons path {
+        fill: #f9a01b;
+      }
+
+      /* 7.2 Personal Info
+      –––––––––––––––––––––––– */
+      .content__personal-info {
+        color: #868e96;
+        font-size: 1rem;
+        padding: 0 70px;
+        margin-top: 25px;
+        margin-bottom: 5px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .personal-info__table td {
+        overflow: hidden;
+        vertical-align: top;
+      }
+
+      /* 1st column */
+      .personal-info__table td:nth-child(1) {
+        width: 25%;
+      }
+
+      /* 2nd column */
+      .personal-info__table td:nth-child(2) {
+        width: 30%;
+        vertical-align: bottom;
+      }
+
+      /* 3rd column */
+      .personal-info__table th:nth-child(3),
+      .personal-info__table td:nth-child(3) {
+        width: 40%;
+        padding-left: 55px;
+      }
+
+      .personal-info__table th {
+        color: #868e96;
+        font-weight: normal;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        padding-bottom: 4px;
+      }
+
+      .personal-info__table tr td div {
+        margin-bottom: 2px;
+        line-height: 18px;
+        padding-right: 10px;
+      }
+
+      .personal-info__table th:last-child,
+      .personal-info__table td:last-child {
+        padding-right: 15px;
+      }
+
+      .personal-info__table td:first-child div:first-child {
+        font-weight: 600;
+        color: #495057;
+        font-size: 1.1rem;
+      }
+
+      /* 7.3 Payment Plan
+      –––––––––––––––––––––––– */
+      .payment-plan__table {
+        font-size: 1rem;
+        color: #6c7680;
+      }
+
+      .payment-plan__table td {
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      /* 1st column */
+      .payment-plan__table td:first-child {
+        width: 40%;
+        font-weight: 600;
+        color: #495057;
+        font-size: 1.2rem;
+        text-align: left;
+        text-transform: capitalize;
+      }
+
+      /* 2nd column */
+      .payment-plan__table td:nth-child(2) {
+        width: 25%;
+      }
+
+      /* 3rd column */
+      .payment-plan__table td:nth-child(3) {
+        width: 10%;
+      }
+
+      /* 4th column */
+      .payment-plan__table td:nth-child(4) {
+        width: 22%;
+      }
+
+      /* 7.4 Summary - Events
+      –––––––––––––––––––––––– */
+      .event {
+        position: relative;
+        box-sizing: border-box;
+        width: 100%;
+        margin: 0 auto;
+        color: #6c7680;
+        font-size: 1.1rem;
+        margin-bottom: 30px !important;
+      }
+
+      /* Add a page break for all event elements except the first one */
+      .event:not(.first-event) {
+        page-break-inside: avoid;
+      }
+
+      .event__header {
+        padding: 0 60px 20px 60px;
+      }
+
+      .event__header__title,
+      .event__header__date-category {
+        display: inline-block;
+      }
+
+      .event__header__title {
+        color: #495057;
+        text-transform: capitalize;
+        font-weight: 600;
+      }
+
+      .event__header__date-category {
+        font-size: 0.9rem;
+        padding-left: 15px;
+        color: #868e96;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+
+      .event__table {
+        margin-bottom: 0;
+      }
+
+      .event table th:last-child,
+      .event table td:last-child {
+        padding-right: 60px;
+        text-align: right;
+      }
+
+      /* 7.4.1 Event Table
+      –––––––––––––––––––––––– */
+      /* 1st column */
+      .event__table th:first-child,
+      .event__table td:first-child {
+        padding-left: 6rem;
+        width: 50%;
+      }
+
+      /* 2nd column */
+      .event__table th:nth-child(2),
+      .event__table td:nth-child(2) {
+        padding-left: 6rem;
+        width: 20%;
+      }
+
+      /* 3rd column */
+      .event__table th:nth-child(3),
+      .event__table td:nth-child(3) {
+        width: 10%;
+        text-align: center;
+      }
+
+      /* 4th column */
+      .event__table th:last-child,
+      .event__table td:last-child {
+        width: 25%;
+      }
+
+      .event__table thead th {
+        color: #495057;
+        background-color: #f3f6f9;
+        text-transform: uppercase;
+        font-size: 1.1rem;
+        font-weight: normal;
+        position: relative;
+      }
+
+      .event__table thead th:first-child {
+        background-color: #e9ecef;
+      }
+
+      .event__table thead th:nth-child(2):before {
+        border-color: rgba(0, 0, 0, 0) #f3f6f9 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+        border-style: solid;
+        border-width: 36px 20px 0 0;
+        content: "";
+        position: absolute;
+        left: -20px;
+        bottom: 0;
+        width: 0;
+      }
+
+      .event__table tr:first-child td {
+        padding-top: 22px;
+      }
+
+      .event__table tbody hr {
+        margin: 5px 0;
+      }
+
+      .event__single-subtotal {
+        color: #495057;
+        font-weight: 600;
+      }
+
+      /* 7.4.2 Event Global Table
+      ––––––––––––––––––––––––––––– */
+      .event__notes,
+      .event__subtotal {
+        vertical-align: top;
+      }
+
+      .event__notes {
+        padding-right: 30px;
+        line-height: 20px;
+      }
+
+      .event__subtotal div {
+        margin-bottom: 10px;
+      }
+
+      .event__global-table {
+        page-break-inside: avoid;
+        margin: 5px 0;
+      }
+
+      /* 1st column */
+      .event__global-table th:first-child,
+      .event__global-table td:first-child {
+        padding-left: 60px;
+        width: 50%;
+      }
+
+      /* 2nd column */
+      .event__global-table th:nth-child(2),
+      .event__global-table td:nth-child(2) {
+        padding-left: 50px;
+        width: 25%;
+      }
+
+      /* 3rd column */
+      .event__global-table th:nth-child(3),
+      .event__global-table td:nth-child(3) {
+        width: 25%;
+      }
+
+      .event__global-table th {
+        color: #495057;
+        padding: 0;
+      }
+
+      .event__order-total td {
+        font-size: 1.6rem;
+        color: #343a40;
+        font-weight: 600;
+      }
+
+      .event__order-total td:nth-child(2) {
+        position: relative;
+      }
+
+      .event__order-total td:nth-child(2):before {
+        border-color: rgba(0, 0, 0, 0) #f3f6f9 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+        border-style: solid;
+        border-width: 43px 20px 0 0;
+        content: "";
+        position: absolute;
+        left: -20px;
+        bottom: 0;
+        width: 0;
+      }
+
+      .event__order-total td:nth-child(2),
+      .event__order-total td:nth-child(3) {
+        background-color: #f3f6f9;
+      }
+
+      .event__order-total .order-total__text path {
+        fill: #f37321;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <!-- Header -->
+      <header class="container content__header clearfix">
+        <div class="header__logo pull-left">
+          <img
+            src="data:image/png;base64,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
+"
+            alt="Miami Heat Logo"
+          />
+        </div>
+        <div class="header__description pull-right">
+          <div class="description__title">
+            <div>
+              <svg
+                class="title__text"
+                viewBox="0 0 288 23"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9.43199 19.248L5.71999 10.16L5.39999 22H0.759995L1.65599 0.687983H6.45599L11.576 14.256L16.696 0.687983H21.496L22.392 22H17.752L17.432 10.16L13.72 19.248H9.43199Z"
+                />
+                <path d="M31.1962 22H26.3962V0.687983H31.1962V22Z" />
+                <path
+                  d="M46.6535 0.687983L53.1815 22H48.1895L47.0375 17.84H39.9015L38.7495 22H33.7575L40.2535 0.687983H46.6535ZM43.4535 4.91198L40.9895 13.84H45.8855L43.4535 4.91198Z"
+                />
+                <path
+                  d="M63.932 19.248L60.22 10.16L59.9 22H55.26L56.156 0.687983H60.956L66.076 14.256L71.196 0.687983H75.996L76.892 22H72.252L71.932 10.16L68.22 19.248H63.932Z"
+                />
+                <path d="M85.6962 22H80.8962V0.687983H85.6962V22Z" />
+                <path
+                  d="M113.216 22H108.416V13.424H101.536V22H96.7362V0.687983H101.536V9.16798H108.416V0.687983H113.216V22Z"
+                />
+                <path
+                  d="M130.769 22H117.361V0.687983H130.769V4.94398H122.161V8.84798H130.097V13.104H122.161V17.744H130.769V22Z"
+                />
+                <path
+                  d="M145.591 0.687983L152.119 22H147.127L145.975 17.84H138.839L137.687 22H132.695L139.191 0.687983H145.591ZM142.391 4.91198L139.927 13.84H144.823L142.391 4.91198Z"
+                />
+                <path
+                  d="M169.077 4.94398H163.35V22H158.549V4.94398H152.822V0.687983H169.077V4.94398Z"
+                />
+                <path d="M183.227 22H178.428V0.687983H183.227V22Z" />
+                <path
+                  d="M199.101 22L192.125 7.98398V22H187.549V0.687983H193.437L200.445 15.376V0.687983H205.021V22H199.101Z"
+                />
+                <path
+                  d="M225.974 0.687983L219.958 22H213.11L207.094 0.687983H212.022L216.534 17.648L221.046 0.687983H225.974Z"
+                />
+                <path
+                  d="M244.081 6.89598V15.792C244.081 17.6053 243.398 19.152 242.033 20.432C240.689 21.6906 238.619 22.32 235.825 22.32C233.03 22.32 230.95 21.6906 229.585 20.432C228.241 19.152 227.569 17.6053 227.569 15.792V6.89598C227.569 5.08265 228.241 3.54665 229.585 2.28798C230.95 1.00798 233.03 0.367981 235.825 0.367981C238.619 0.367981 240.689 1.00798 242.033 2.28798C243.398 3.54665 244.081 5.08265 244.081 6.89598ZM239.281 15.376V7.31198C239.281 5.51998 238.129 4.62398 235.825 4.62398C233.521 4.62398 232.369 5.51998 232.369 7.31198V15.376C232.369 17.168 233.521 18.064 235.825 18.064C238.129 18.064 239.281 17.168 239.281 15.376Z"
+                />
+                <path d="M252.727 22H247.928V0.687983H252.727V22Z" />
+                <path
+                  d="M261.369 7.66398V15.024C261.369 16.0266 261.582 16.7733 262.009 17.264C262.435 17.7333 263.214 17.968 264.345 17.968C266.03 17.968 267.865 17.7973 269.849 17.456L270.521 21.648C268.409 22.096 266.35 22.32 264.345 22.32C261.742 22.32 259.79 21.744 258.489 20.592C257.209 19.4186 256.569 17.8186 256.569 15.792V6.89598C256.569 4.86932 257.209 3.27998 258.489 2.12798C259.79 0.954648 261.742 0.367981 264.345 0.367981C266.35 0.367981 268.409 0.591981 270.521 1.03998L269.849 5.23198C267.865 4.89065 266.03 4.71998 264.345 4.71998C263.214 4.71998 262.435 4.96532 262.009 5.45598C261.582 5.92532 261.369 6.66132 261.369 7.66398Z"
+                />
+                <path
+                  d="M287.144 22H273.736V0.687983H287.144V4.94398H278.536V8.84798H286.472V13.104H278.536V17.744H287.144V22Z"
+                />
+              </svg>
+            </div>
+            <hr />
+          </div>
+          <div class="description__details">
+            <div class="details__order pull-left">
+              <svg
+                class="order__icons"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M3 3.05176e-05H11.4142L15 3.58582V14C15 15.1046 14.1046 16 13 16H3C1.89543 16 1 15.1046 1 14V2.00003C1 0.895461 1.89543 3.05176e-05 3 3.05176e-05ZM9 2.00003H3V14H13V6.00003H11C9.89543 6.00003 9 5.1046 9 4.00003V2.00003ZM11 2.41424V4.00003H12.5858L11 2.41424Z"
+                />
+              </svg>
+              <span>Order #135772</span>
+            </div>
+            <div class="details__date pull-left">
+              <svg
+                class="order__icons"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M2 7.00003V14H14V7.00003H2ZM2 5.00003H14V3.00003H12H4H2V5.00003ZM16 3.00003C16 1.89546 15.1046 1.00003 14 1.00003V3.05176e-05H12V1.00003H4V3.05176e-05H2V1.00003C0.89543 1.00003 0 1.89546 0 3.00003V14C0 15.1046 0.89543 16 2 16H14C15.1046 16 16 15.1046 16 14V3.00003Z"
+                />
+              </svg>
+              <span>03 / 20 / 2019</span>
+            </div>
+            <div class="details__name pull-left">
+              <svg
+                class="order__icons"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8C16 12.4183 12.4183 16 8 16ZM12.9946 11.3259C13.6297 10.374 14 9.23024 14 8C14 4.68629 11.3137 2 8 2C4.68629 2 2 4.68629 2 8C2 9.23023 2.37025 10.374 3.00541 11.3259C3.96446 10.53 5.71353 10.1818 8 10.1818C10.2865 10.1818 12.0355 10.53 12.9946 11.3259ZM12.0244 12.4503C11.424 11.9457 10.0421 11.6364 8 11.6364C5.95794 11.6364 4.57599 11.9457 3.97563 12.4503C5.04002 13.4134 6.4515 14 8 14C9.5485 14 10.96 13.4134 12.0244 12.4503ZM7.99999 3.63637C6.23933 3.63637 5.0909 4.91329 5.0909 6.54547C5.0909 9.0381 6.37153 10.1818 7.99999 10.1818C9.61314 10.1818 10.9091 9.07609 10.9091 6.69092C10.9091 5.03389 9.75577 3.63637 7.99999 3.63637ZM6.54545 6.54544C6.54545 8.19581 7.14052 8.72726 8 8.72726C8.85651 8.72726 9.45455 8.217 9.45455 6.6909C9.45455 5.78211 8.88411 5.0909 8 5.0909C7.07908 5.0909 6.54545 5.68423 6.54545 6.54544Z"
+                />
+              </svg>
+              <span>Florian Louis</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Personal Info -->
+      <section class="container content__personal-info">
+        <table class="personal-info__table">
+          <thead>
+            <tr>
+              <th>Customer</th>
+              <th></th>
+              <th>Billing Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div>Jane Williams</div>
+                <div>ID 12345678</div>
+                <div>Account Name</div>
+              </td>
+              <td>
+                <div>jane@mail.com</div>
+                <div>786-777-4374</div>
+              </td>
+              <td>
+                <div>Jane Williams</div>
+                <div>601 Biscayne Blvd, Miami, FL 33132, USA</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Payment Plan -->
+      <section class="content__payment-plan">
+        <div class="container">
+          <svg
+            width="88"
+            height="14"
+            viewBox="0 0 122 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8.892 4.97996C8.892 6.11996 8.562 6.97196 7.902 7.53596C7.242 8.08796 6.192 8.36396 4.752 8.36396H2.7V12H0V0.0119629H4.896C6.324 0.0119629 7.344 0.293963 7.956 0.857963C8.58 1.40996 8.892 2.26196 8.892 3.41396V4.97996ZM6.192 4.70996V3.66596C6.192 3.22196 6.09 2.90396 5.886 2.71196C5.682 2.50796 5.304 2.40596 4.752 2.40596H2.7V6.02396H4.752C5.316 6.02396 5.694 5.92196 5.886 5.71796C6.09 5.51396 6.192 5.17796 6.192 4.70996Z"
+              fill="#495057"
+            />
+            <path
+              d="M16.7757 0.0119629L20.4477 12H17.6397L16.9917 9.65996H12.9777L12.3297 12H9.52172L13.1757 0.0119629H16.7757ZM14.9757 2.38796L13.5897 7.40996H16.3437L14.9757 2.38796Z"
+              fill="#495057"
+            />
+            <path
+              d="M30.7789 0.0119629L27.0529 8.54396V12H24.3529V8.54396L20.6269 0.0119629H23.4529L25.7029 5.57396L27.9529 0.0119629H30.7789Z"
+              fill="#495057"
+            />
+            <path
+              d="M36.655 10.452L34.567 5.33996L34.387 12H31.777L32.281 0.0119629H34.981L37.861 7.64396L40.741 0.0119629H43.441L43.945 12H41.335L41.155 5.33996L39.067 10.452H36.655Z"
+              fill="#495057"
+            />
+            <path
+              d="M53.6494 12H46.1074V0.0119629H53.6494V2.40596H48.8074V4.60196H53.2714V6.99596H48.8074V9.60596H53.6494V12Z"
+              fill="#495057"
+            />
+            <path
+              d="M62.2207 12L58.2967 4.11596V12H55.7227V0.0119629H59.0347L62.9767 8.27396V0.0119629H65.5507V12H62.2207Z"
+              fill="#495057"
+            />
+            <path
+              d="M76.0767 2.40596H72.8547V12H70.1547V2.40596H66.9327V0.0119629H76.0767V2.40596Z"
+              fill="#495057"
+            />
+            <path
+              d="M90.1381 4.97996C90.1381 6.11996 89.8081 6.97196 89.1481 7.53596C88.4881 8.08796 87.4381 8.36396 85.9981 8.36396H83.9461V12H81.2461V0.0119629H86.1421C87.5701 0.0119629 88.5901 0.293963 89.2021 0.857963C89.8261 1.40996 90.1381 2.26196 90.1381 3.41396V4.97996ZM87.4381 4.70996V3.66596C87.4381 3.22196 87.3361 2.90396 87.1321 2.71196C86.9281 2.50796 86.5501 2.40596 85.9981 2.40596H83.9461V6.02396H85.9981C86.5621 6.02396 86.9401 5.92196 87.1321 5.71796C87.3361 5.51396 87.4381 5.17796 87.4381 4.70996Z"
+              fill="#495057"
+            />
+            <path
+              d="M99.2098 12H91.7578V0.0119629H94.4578V9.60596H99.2098V12Z"
+              fill="#495057"
+            />
+            <path
+              d="M107.004 0.0119629L110.676 12H107.868L107.22 9.65996H103.206L102.558 12H99.7502L103.404 0.0119629H107.004ZM105.204 2.38796L103.818 7.40996H106.572L105.204 2.38796Z"
+              fill="#495057"
+            />
+            <path
+              d="M118.523 12L114.599 4.11596V12H112.025V0.0119629H115.337L119.279 8.27396V0.0119629H121.853V12H118.523Z"
+              fill="#495057"
+            />
+          </svg>
+
+          <hr />
+          <table class="payment-plan__table full-width">
+            <tbody>
+              <tr>
+                <td>4 Months</td>
+                <td>March 19, 2019</td>
+                <td>To</td>
+                <td>May 20, 2019</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Summary -->
+      <section class="content__summary">
+        <div class="container">
+          <svg
+            width="60"
+            height="14"
+            viewBox="0 0 83 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9.072 9.634C9.072 10.474 8.958 11.14 8.73 11.632C8.514 12.112 8.076 12.49 7.416 12.766C6.768 13.042 5.856 13.18 4.68 13.18C3.228 13.18 1.938 12.922 0.809998 12.406L1.26 10.318C2.496 10.702 3.648 10.894 4.716 10.894C5.4 10.894 5.844 10.81 6.048 10.642C6.264 10.474 6.372 10.132 6.372 9.616C6.372 9.304 6.36 9.088 6.336 8.968C6.324 8.836 6.24 8.704 6.084 8.572C5.94 8.428 5.748 8.326 5.508 8.266C5.268 8.194 4.884 8.098 4.356 7.978C2.916 7.666 1.998 7.282 1.602 6.826C1.218 6.37 1.026 5.488 1.026 4.18C1.026 2.944 1.314 2.08 1.89 1.588C2.466 1.084 3.558 0.831999 5.166 0.831999C6.366 0.831999 7.578 0.963999 8.802 1.228L8.532 3.496C7.2 3.268 6.09 3.154 5.202 3.154C4.602 3.154 4.206 3.226 4.014 3.37C3.822 3.514 3.726 3.808 3.726 4.252C3.726 4.828 3.81 5.188 3.978 5.332C4.158 5.464 4.722 5.644 5.67 5.872C6.222 6.004 6.678 6.13 7.038 6.25C7.41 6.37 7.728 6.514 7.992 6.682C8.256 6.85 8.454 7.006 8.586 7.15C8.73 7.294 8.838 7.51 8.91 7.798C8.982 8.074 9.024 8.338 9.036 8.59C9.06 8.83 9.072 9.178 9.072 9.634Z"
+              fill="#495057"
+            />
+            <path
+              d="M17.207 1.012H19.907V9.508C19.907 10.54 19.541 11.41 18.809 12.118C18.089 12.826 16.949 13.18 15.389 13.18C13.829 13.18 12.683 12.826 11.951 12.118C11.231 11.41 10.871 10.54 10.871 9.508V1.012H13.571V9.256C13.571 9.76 13.709 10.144 13.985 10.408C14.273 10.66 14.741 10.786 15.389 10.786C16.037 10.786 16.499 10.66 16.775 10.408C17.063 10.144 17.207 9.76 17.207 9.256V1.012Z"
+              fill="#495057"
+            />
+            <path
+              d="M26.8563 11.452L24.7683 6.34L24.5883 13H21.9783L22.4823 1.012H25.1823L28.0623 8.644L30.9423 1.012H33.6423L34.1463 13H31.5363L31.3563 6.34L29.2683 11.452H26.8563Z"
+              fill="#495057"
+            />
+            <path
+              d="M41.0067 11.452L38.9187 6.34L38.7387 13H36.1287L36.6327 1.012H39.3327L42.2127 8.644L45.0927 1.012H47.7927L48.2967 13H45.6867L45.5067 6.34L43.4187 11.452H41.0067Z"
+              fill="#495057"
+            />
+            <path
+              d="M56.7231 1.012L60.3951 13H57.5871L56.9391 10.66H52.9251L52.2771 13H49.4691L53.1231 1.012H56.7231ZM54.9231 3.388L53.5371 8.41H56.2911L54.9231 3.388Z"
+              fill="#495057"
+            />
+            <path
+              d="M68.6742 13L66.0282 9.274H64.4442V13H61.7442V1.012H66.7302C68.1582 1.012 69.1782 1.294 69.7902 1.858C70.4142 2.41 70.7262 3.262 70.7262 4.414V5.89C70.7262 7.402 70.1442 8.404 68.9802 8.896L71.8782 13H68.6742ZM68.0262 5.62V4.666C68.0262 4.21 67.9182 3.886 67.7022 3.694C67.4982 3.502 67.1262 3.406 66.5862 3.406H64.4442V6.934H66.5862C67.1382 6.934 67.5162 6.832 67.7202 6.628C67.9242 6.424 68.0262 6.088 68.0262 5.62Z"
+              fill="#495057"
+            />
+            <path
+              d="M82.2926 1.012L78.5666 9.544V13H75.8666V9.544L72.1406 1.012H74.9666L77.2166 6.574L79.4666 1.012H82.2926Z"
+              fill="#495057"
+            />
+          </svg>
+
+          <hr />
+        </div>
+
+        <!-- Events -->
+        <!-- First Event  -->
+        <article class="event first-event">
+          <header class="event__header">
+            <h6 class="event__header__title">
+              Atlanta Hawks vs Miami Heat
+            </h6>
+            <div class="event__header__date-category">
+              March 4, 2019 | Groups
+            </div>
+          </header>
+          <table class="event__table full-width">
+            <thead>
+              <tr>
+                <th>Item Description</th>
+                <th>Price</th>
+                <th>QTY</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Location A PC1</td>
+                <td>$ 40.00</td>
+                <td>2</td>
+                <td>$ 80.00</td>
+              </tr>
+              <tr>
+                <td>Location A PC2</td>
+                <td>$ 50.00</td>
+                <td>2</td>
+                <td>$ 100.00</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <hr />
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td class="event__single-subtotal" colspan="2">Event Total</td>
+                <td class="event__single-subtotal">$ 180.00</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <hr />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+        <!-- Event -->
+        <article class="event">
+          <header class="event__header">
+            <h6 class="event__header__title">
+              Toronto Raptors vs Miami Heat
+            </h6>
+            <div class="event__header__date-category">
+              March 10, 2019 | Groups
+            </div>
+          </header>
+          <table class="event__table full-width">
+            <thead>
+              <tr>
+                <th>Item Description</th>
+                <th>Price</th>
+                <th>QTY</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Location A PC1</td>
+                <td>$ 40.00</td>
+                <td>2</td>
+                <td>$ 80.00</td>
+              </tr>
+              <tr>
+                <td>Location A PC2</td>
+                <td>$ 50.00</td>
+                <td>2</td>
+                <td>$ 100.00</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <hr />
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td class="event__single-subtotal" colspan="2">Event Total</td>
+                <td class="event__single-subtotal">$ 180.00</td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <hr />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+        <!-- Event Global Table -->
+        <article class="event">
+          <table class="event__global-table full-width">
+            <thead>
+              <tr>
+                <th>Notes:</th>
+                <th>Order Subtotal</th>
+                <th>$ 360.00</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="event__notes" rowspan="2">
+                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                  Aenean commodo ligula eget
+                </td>
+                <td class="event__subtotal">
+                  <div>Handling</div>
+                  <div>Deposit</div>
+                </td>
+                <td class="event__subtotal" colspan="2">
+                  <div>$ 40.00</div>
+                  <div>$ 0.00</div>
+                </td>
+              </tr>
+              <tr>
+                <td><!-- For spacing --></td>
+              </tr>
+              <tr class="event__order-total">
+                <td></td>
+                <td>
+                  <svg
+                    class="order-total__text"
+                    width="65"
+                    height="14"
+                    viewBox="0 0 81 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.188 4.50396V9.50796C10.188 10.528 9.80397 11.398 9.03597 12.118C8.27997 12.826 7.11597 13.18 5.54397 13.18C3.97197 13.18 2.80197 12.826 2.03397 12.118C1.27797 11.398 0.899971 10.528 0.899971 9.50796V4.50396C0.899971 3.48396 1.27797 2.61996 2.03397 1.91196C2.80197 1.19196 3.97197 0.831961 5.54397 0.831961C7.11597 0.831961 8.27997 1.19196 9.03597 1.91196C9.80397 2.61996 10.188 3.48396 10.188 4.50396ZM7.48797 9.27396V4.73796C7.48797 3.72996 6.83997 3.22596 5.54397 3.22596C4.24797 3.22596 3.59997 3.72996 3.59997 4.73796V9.27396C3.59997 10.282 4.24797 10.786 5.54397 10.786C6.83997 10.786 7.48797 10.282 7.48797 9.27396Z"
+                    />
+                    <path
+                      d="M17.1758 6.50196C16.1198 6.92196 15.3458 7.30596 14.8538 7.65396V13H12.2618V4.23396H14.4218L14.6018 5.07996C14.8898 4.88796 15.2678 4.68996 15.7358 4.48596C16.2158 4.26996 16.6238 4.12596 16.9598 4.05396L17.1758 6.50196Z"
+                    />
+                    <path
+                      d="M18.0168 9.93996V7.29396C18.0168 5.13396 19.0008 4.05396 20.9688 4.05396C21.7608 4.05396 22.5048 4.13796 23.2008 4.30596V0.651961L25.7928 0.291962V13H23.7588L23.4888 12.298C22.5768 12.886 21.6768 13.18 20.7888 13.18C19.8888 13.18 19.1988 12.91 18.7188 12.37C18.2508 11.818 18.0168 11.008 18.0168 9.93996ZM23.2008 10.246V6.51996C22.6008 6.37596 22.0488 6.30396 21.5448 6.30396C20.9208 6.30396 20.6088 6.63396 20.6088 7.29396V9.93996C20.6088 10.6 20.9208 10.93 21.5448 10.93C22.1208 10.93 22.6728 10.702 23.2008 10.246Z"
+                    />
+                    <path
+                      d="M34.9928 9.52596H30.2768V9.77796C30.2768 10.27 30.3908 10.606 30.6188 10.786C30.8468 10.966 31.2608 11.056 31.8608 11.056C32.8088 11.056 33.6968 10.93 34.5248 10.678L34.9028 12.622C33.8828 12.994 32.7848 13.18 31.6088 13.18C28.9928 13.18 27.6848 11.992 27.6848 9.61596V7.56396C27.6848 5.22396 28.9388 4.05396 31.4468 4.05396C32.1428 4.05396 32.7308 4.14996 33.2108 4.34196C33.7028 4.53396 34.0688 4.80996 34.3088 5.16996C34.5608 5.52996 34.7348 5.91396 34.8308 6.32196C34.9388 6.71796 34.9928 7.17396 34.9928 7.68996V9.52596ZM32.5448 7.58196V7.20396C32.5448 6.85596 32.4668 6.58596 32.3108 6.39396C32.1668 6.18996 31.8848 6.08796 31.4648 6.08796C30.6728 6.08796 30.2768 6.45996 30.2768 7.20396V7.58196H32.5448Z"
+                    />
+                    <path
+                      d="M41.8027 6.50196C40.7467 6.92196 39.9727 7.30596 39.4807 7.65396V13H36.8887V4.23396H39.0487L39.2287 5.07996C39.5167 4.88796 39.8947 4.68996 40.3627 4.48596C40.8427 4.26996 41.2507 4.12596 41.5867 4.05396L41.8027 6.50196Z"
+                    />
+                    <path
+                      d="M51.6791 12.856C51.0551 13.072 50.4311 13.18 49.8071 13.18C48.0431 13.18 47.1611 12.43 47.1611 10.93V6.32196H45.9731V4.23396H47.1611V2.12796L49.7531 1.76796V4.23396H51.7511L51.6071 6.32196H49.7531V10.57C49.7531 10.894 49.9331 11.056 50.2931 11.056C50.6891 11.056 51.0491 11.002 51.3731 10.894L51.6791 12.856Z"
+                    />
+                    <path
+                      d="M59.9114 12.19C59.3114 12.85 58.2974 13.18 56.8694 13.18C55.4414 13.18 54.4214 12.85 53.8094 12.19C53.2094 11.518 52.9094 10.666 52.9094 9.63396V7.59996C52.9094 6.56796 53.2094 5.72196 53.8094 5.06196C54.4214 4.38996 55.4414 4.05396 56.8694 4.05396C58.2974 4.05396 59.3114 4.38996 59.9114 5.06196C60.5234 5.72196 60.8294 6.56796 60.8294 7.59996V9.63396C60.8294 10.666 60.5234 11.518 59.9114 12.19ZM55.5014 9.70596C55.5014 10.57 55.9574 11.002 56.8694 11.002C57.7814 11.002 58.2374 10.57 58.2374 9.70596V7.52796C58.2374 6.66396 57.7814 6.23196 56.8694 6.23196C55.9574 6.23196 55.5014 6.66396 55.5014 7.52796V9.70596Z"
+                    />
+                    <path
+                      d="M67.517 12.856C66.893 13.072 66.269 13.18 65.645 13.18C63.881 13.18 62.999 12.43 62.999 10.93V6.32196H61.811V4.23396H62.999V2.12796L65.591 1.76796V4.23396H67.589L67.445 6.32196H65.591V10.57C65.591 10.894 65.771 11.056 66.131 11.056C66.527 11.056 66.887 11.002 67.211 10.894L67.517 12.856Z"
+                    />
+                    <path
+                      d="M76.0193 13H73.8953L73.7153 12.442C72.8273 12.934 71.9933 13.18 71.2133 13.18C70.4453 13.18 69.8693 12.934 69.4853 12.442C69.1133 11.95 68.9273 11.308 68.9273 10.516C68.9273 9.63996 69.1313 9.00996 69.5393 8.62596C69.9593 8.24196 70.6253 8.04996 71.5373 8.04996H73.4273V7.38396C73.4273 6.90396 73.3313 6.58596 73.1393 6.42996C72.9593 6.26196 72.5393 6.17796 71.8793 6.17796C71.1593 6.17796 70.3673 6.26196 69.5033 6.42996L69.1613 4.48596C70.1093 4.19796 71.1593 4.05396 72.3113 4.05396C73.7873 4.05396 74.7713 4.29996 75.2633 4.79196C75.7673 5.27196 76.0193 6.14196 76.0193 7.40196V13ZM73.4273 10.858V9.84996H72.1853C71.8973 9.84996 71.6933 9.89796 71.5733 9.99396C71.4653 10.078 71.4113 10.24 71.4113 10.48C71.4113 10.72 71.4653 10.894 71.5733 11.002C71.6813 11.11 71.8613 11.164 72.1133 11.164C72.5453 11.164 72.9833 11.062 73.4273 10.858Z"
+                    />
+                    <path
+                      d="M80.7717 13H78.1797V0.651961L80.7717 0.291962V13Z"
+                    />
+                  </svg>
+                </td>
+                <td>$ 400.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+      </section>
+    </div>
+  </body>
+</html>
