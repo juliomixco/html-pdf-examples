@@ -15,7 +15,7 @@ const server = http.createServer((req, res) => {
       type: "pdf",
       margin: "0",
       header: {
-        height: "0.2in",
+        height: "0.3in",
         contents: {
           first: "<div class='top-bar'></div>",
           default: "<header></header>"
