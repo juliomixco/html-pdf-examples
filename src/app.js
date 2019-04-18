@@ -2,7 +2,7 @@ const http = require("http");
 const pdf = require("html-pdf");
 var fs = require("fs");
 
-const filePath = "src/pages/SimpleInvoice/index.html";
+const filePath = "src/pages/PaymentInfo/index.html";
 const hostname = "127.0.0.1";
 const port = 3000;
 
