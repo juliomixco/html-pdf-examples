@@ -2,7 +2,7 @@ const http = require("http");
 const pdf = require("html-pdf");
 var fs = require("fs");
 
-const filePath = "src/pages/MultipleEvents/index.html";
+const filePath = "src/pages/TC/index.html";
 const hostname = "127.0.0.1";
 const port = 3000;
 
@@ -22,7 +22,7 @@ const server = http.createServer((req, res) => {
         }
       },
       footer: {
-        height: "0.2in",
+        height: "0.5in",
         contents: "<footer></footer>"
       }
     };
