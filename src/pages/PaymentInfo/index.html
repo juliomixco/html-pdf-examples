@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Payment Information Page</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,600"
+      rel="stylesheet"
+    />
+    <style type="text/css">
+      /* 1. Base Styles
+      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+      html {
+        font-size: 62.5%;
+        box-sizing: border-box;
+      }
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        color: #343a40;
+        font-size: 1.6rem;
+        word-break: break-word;
+        font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+      }
+
+      .top-bar {
+        height: 100%;
+        background-color: #f37321;
+      }
+
+      .page-wrapper {
+        width: 100%;
+        height: 100%;
+      }
+
+      .container {
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+        padding: 20px 60px;
+        box-sizing: border-box;
+      }
+
+      .row {
+        color: #868e96;
+        text-transform: uppercase;
+      }
+
+      /* 2. Tables
+      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+      table {
+        border-collapse: collapse;
+        table-layout: fixed;
+      }
+
+      th,
+      td {
+        text-align: left;
+        vertical-align: middle;
+        text-overflow: ellipsis;
+      }
+
+      th:first-child,
+      td:first-child {
+        padding-left: 0;
+      }
+
+      th:last-child,
+      td:last-child {
+        padding-right: 0;
+      }
+
+      /* 3. Utilities
+      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+      .full-width {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      /* 4. Misc
+      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+      hr {
+        border-width: 0;
+        border-top: 1px solid #dee2e6;
+      }
+
+      /* 5. Page Sections
+      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+      /* 5.1 Header
+      –––––––––––––––––––––––– */
+      .content__header {
+        padding: 0;
+        width: 100%;
+        height: auto;
+        position: relative;
+        margin-bottom: 10px;
+      }
+
+      .header__logo {
+        width: 15%;
+        height: 80px;
+        position: relative;
+      }
+
+      .logo-image {
+        top: 0;
+        left: 0;
+        width: 70px;
+        height: 65px;
+        position: absolute;
+      }
+
+      .header__description {
+        top: 0;
+        right: 0;
+        width: 85%;
+        height: 80px;
+        position: absolute;
+        vertical-align: middle;
+      }
+
+      .heaader__description .description__title {
+        display: inline-block;
+      }
+
+      .header__description .description__title .title__text {
+        width: 180px;
+        height: auto;
+      }
+
+      .header__description .description__title .title__text path {
+        fill: #343a40;
+      }
+
+      .header__description .description__details {
+        color: #6c7680;
+        font-size: 1.1rem;
+        display: inline-block;
+        top: 0;
+        right: 200px;
+        position: absolute;
+      }
+
+      .header__description .description__details .order__icons {
+        width: 14px;
+        height: auto;
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+
+      .header__description .description__details .order__icons path {
+        fill: #f9a01b;
+      }
+
+      /* 5.2 Payment Info
+      –––––––––––––––––––––––– */
+      .content__payment .payment__title {
+        width: 140px;
+        height: 16px;
+      }
+
+      .content__payment .payment__title path {
+        fill: #495057;
+      }
+
+      .payer {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 1rem;
+        color: #6c7680;
+        position: relative;
+        margin-bottom: 30px !important;
+      }
+
+      .payer .payer-total {
+        font-weight: 600;
+        margin-left: 10px;
+        color: #495057;
+      }
+
+      /* 5.2.1 Payer Table
+      –––––––––––––––––––––––– */
+      /* Table Head */
+      .payer__table thead th {
+        color: #6c7680;
+        background-color: #f3f6f9;
+        font-size: 1.1rem;
+        font-weight: normal;
+        position: relative;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-transform: uppercase;
+      }
+
+      /* 1st column */
+      .payer__table th:first-child {
+        width: 36%;
+        font-weight: 600;
+        color: #495057;
+        padding-left: 6rem;
+        text-transform: capitalize;
+      }
+
+      /* 2nd column */
+      .payer__table th:nth-child(2) {
+        width: 25%;
+        text-align: center;
+      }
+
+      /* 3rd column */
+      .payer__table th:nth-child(3) {
+        width: 39%;
+        padding-right: 6rem;
+        text-align: center;
+      }
+
+      /* Table Body */
+      .payer__table tbody td {
+        padding: 2rem 6rem 1rem 6rem;
+      }
+
+      /* 5.2.1.1 First Row - Payment Type
+      ––––––––––––––––––––––––––––––––––– */
+      .row-payment-type .heading {
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+      }
+
+      .row-payment-type .heading__subtext {
+        font-size: 0.8rem;
+        margin-left: 10px;
+      }
+
+      /* Custom Radio Buttons */
+      .row-payment-type .cards__container-radio {
+        display: inline-block;
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 12px;
+        margin-right: 25px;
+        cursor: pointer;
+        font-size: 1rem;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      /* Hide the browser's default radio button */
+      .row-payment-type .cards__container-radio input {
+        opacity: 0;
+        position: absolute;
+        cursor: pointer;
+      }
+
+      /* Custom radio buttons checkmark */
+      .cards__container-radio .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        background-color: #dee2e6;
+      }
+
+      /* Hide the indicator (dot) when not checked */
+      .cards__container-radio .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+
+      .cards__container-radio:hover input ~ .checkmark {
+        background-color: #ccc;
+      }
+
+      /* When the radio button is checked, add an orange background */
+      .cards__container-radio input:checked ~ .checkmark {
+        background-color: #f37321;
+      }
+
+      /* Show the indicator (dot) when checked */
+      .cards__container-radio input:checked ~ .checkmark:after {
+        display: block;
+      }
+
+      /* The indicator (dot) */
+      .cards__container-radio .checkmark:after {
+        top: 5px;
+        left: 5px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: white;
+      }
+
+      .cards__container-radio .cards-icons {
+        width: 32px;
+        height: auto;
+        margin-top: -8px;
+      }
+
+      /* 5.2.1.2 Second Row - Card Info
+      –––––––––––––––––––––––––––––––– */
+      .row-card-info,
+      .row-address-info {
+        width: 100%;
+      }
+
+      .card-info__inputs,
+      .card-address__inputs {
+        width: 32.5%;
+        float: left;
+      }
+
+      /* 5.2.1.3 Third Row - Card Address
+      –––––––––––––––––––––––––––––––– */
+      .card-address__inputs.input-1 {
+        width: 32.5%;
+      }
+
+      .card-address__inputs.input-2 {
+        width: 32.5%;
+      }
+
+      .card-address__inputs.input-3 {
+        width: 16%;
+      }
+
+      .card-address__inputs.input-4 {
+        width: 16%;
+      }
+
+      .row-card-info input[type="text"],
+      .row-address-info input[type="text"] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 10px 0;
+        box-sizing: border-box;
+        border: none;
+        background: #e9ecef;
+      }
+
+      /* Input Borders */
+      .first-input-border {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+
+      .side-input-border {
+        border-left: 1px solid #dee2e6 !important;
+      }
+
+      .last-input-border {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+
+      /* 5.3 Signature Section
+      –––––––––––––––––––––––– */
+      .content__signature {
+        width: 100%;
+        position: relative;
+        bottom: 0;
+        padding-top: 16%;
+      }
+
+      .signature-inputs {
+        color: #868e96;
+        font-size: 0.9rem;
+        display: inline-block;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .signature-inputs input[type="text"] {
+        border: none;
+        width: 100%;
+      }
+
+      .signature-name {
+        width: 60%;
+        margin-right: 7%;
+      }
+
+      .signature-date {
+        width: 30%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <!-- Header -->
+      <header class="container content__header">
+        <div class="header__logo">
+          <img
+            src="data:image/png;base64,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"
+            alt="Miami Heat Logo"
+            class="logo-image"
+          />
+        </div>
+        <div class="header__description">
+          <div class="description__title">
+            <svg
+              class="title__text"
+              viewBox="0 0 288 23"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.43199 19.248L5.71999 10.16L5.39999 22H0.759995L1.65599 0.687983H6.45599L11.576 14.256L16.696 0.687983H21.496L22.392 22H17.752L17.432 10.16L13.72 19.248H9.43199Z"
+              />
+              <path d="M31.1962 22H26.3962V0.687983H31.1962V22Z" />
+              <path
+                d="M46.6535 0.687983L53.1815 22H48.1895L47.0375 17.84H39.9015L38.7495 22H33.7575L40.2535 0.687983H46.6535ZM43.4535 4.91198L40.9895 13.84H45.8855L43.4535 4.91198Z"
+              />
+              <path
+                d="M63.932 19.248L60.22 10.16L59.9 22H55.26L56.156 0.687983H60.956L66.076 14.256L71.196 0.687983H75.996L76.892 22H72.252L71.932 10.16L68.22 19.248H63.932Z"
+              />
+              <path d="M85.6962 22H80.8962V0.687983H85.6962V22Z" />
+              <path
+                d="M113.216 22H108.416V13.424H101.536V22H96.7362V0.687983H101.536V9.16798H108.416V0.687983H113.216V22Z"
+              />
+              <path
+                d="M130.769 22H117.361V0.687983H130.769V4.94398H122.161V8.84798H130.097V13.104H122.161V17.744H130.769V22Z"
+              />
+              <path
+                d="M145.591 0.687983L152.119 22H147.127L145.975 17.84H138.839L137.687 22H132.695L139.191 0.687983H145.591ZM142.391 4.91198L139.927 13.84H144.823L142.391 4.91198Z"
+              />
+              <path
+                d="M169.077 4.94398H163.35V22H158.549V4.94398H152.822V0.687983H169.077V4.94398Z"
+              />
+              <path d="M183.227 22H178.428V0.687983H183.227V22Z" />
+              <path
+                d="M199.101 22L192.125 7.98398V22H187.549V0.687983H193.437L200.445 15.376V0.687983H205.021V22H199.101Z"
+              />
+              <path
+                d="M225.974 0.687983L219.958 22H213.11L207.094 0.687983H212.022L216.534 17.648L221.046 0.687983H225.974Z"
+              />
+              <path
+                d="M244.081 6.89598V15.792C244.081 17.6053 243.398 19.152 242.033 20.432C240.689 21.6906 238.619 22.32 235.825 22.32C233.03 22.32 230.95 21.6906 229.585 20.432C228.241 19.152 227.569 17.6053 227.569 15.792V6.89598C227.569 5.08265 228.241 3.54665 229.585 2.28798C230.95 1.00798 233.03 0.367981 235.825 0.367981C238.619 0.367981 240.689 1.00798 242.033 2.28798C243.398 3.54665 244.081 5.08265 244.081 6.89598ZM239.281 15.376V7.31198C239.281 5.51998 238.129 4.62398 235.825 4.62398C233.521 4.62398 232.369 5.51998 232.369 7.31198V15.376C232.369 17.168 233.521 18.064 235.825 18.064C238.129 18.064 239.281 17.168 239.281 15.376Z"
+              />
+              <path d="M252.727 22H247.928V0.687983H252.727V22Z" />
+              <path
+                d="M261.369 7.66398V15.024C261.369 16.0266 261.582 16.7733 262.009 17.264C262.435 17.7333 263.214 17.968 264.345 17.968C266.03 17.968 267.865 17.7973 269.849 17.456L270.521 21.648C268.409 22.096 266.35 22.32 264.345 22.32C261.742 22.32 259.79 21.744 258.489 20.592C257.209 19.4186 256.569 17.8186 256.569 15.792V6.89598C256.569 4.86932 257.209 3.27998 258.489 2.12798C259.79 0.954648 261.742 0.367981 264.345 0.367981C266.35 0.367981 268.409 0.591981 270.521 1.03998L269.849 5.23198C267.865 4.89065 266.03 4.71998 264.345 4.71998C263.214 4.71998 262.435 4.96532 262.009 5.45598C261.582 5.92532 261.369 6.66132 261.369 7.66398Z"
+              />
+              <path
+                d="M287.144 22H273.736V0.687983H287.144V4.94398H278.536V8.84798H286.472V13.104H278.536V17.744H287.144V22Z"
+              />
+            </svg>
+            <div class="description__details">
+              <svg
+                class="order__icons"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M3 3.05176e-05H11.4142L15 3.58582V14C15 15.1046 14.1046 16 13 16H3C1.89543 16 1 15.1046 1 14V2.00003C1 0.895461 1.89543 3.05176e-05 3 3.05176e-05ZM9 2.00003H3V14H13V6.00003H11C9.89543 6.00003 9 5.1046 9 4.00003V2.00003ZM11 2.41424V4.00003H12.5858L11 2.41424Z"
+                />
+              </svg>
+              <span>Order #135772</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Payment Information Section -->
+      <section class="content__payment">
+        <div class="container">
+          <svg
+            class="payment__title"
+            viewBox="0 0 192 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9.062 5.98003C9.062 7.12003 8.732 7.97203 8.072 8.53603C7.412 9.08803 6.362 9.36403 4.922 9.36403H2.87V13H0.169998V1.01203H5.066C6.494 1.01203 7.514 1.29403 8.126 1.85803C8.75 2.41003 9.062 3.26203 9.062 4.41403V5.98003ZM6.362 5.71003V4.66603C6.362 4.22203 6.26 3.90403 6.056 3.71203C5.852 3.50803 5.474 3.40603 4.922 3.40603H2.87V7.02403H4.922C5.486 7.02403 5.864 6.92203 6.056 6.71803C6.26 6.51403 6.362 6.17803 6.362 5.71003Z"
+            />
+            <path
+              d="M16.9457 1.01203L20.6177 13H17.8097L17.1617 10.66H13.1477L12.4997 13H9.69172L13.3457 1.01203H16.9457ZM15.1457 3.38803L13.7597 8.41003H16.5137L15.1457 3.38803Z"
+            />
+            <path
+              d="M30.9489 1.01203L27.2229 9.54403V13H24.5229V9.54403L20.7969 1.01203H23.6229L25.8729 6.57403L28.1229 1.01203H30.9489Z"
+            />
+            <path
+              d="M36.825 11.452L34.737 6.34003L34.557 13H31.947L32.451 1.01203H35.151L38.031 8.64403L40.911 1.01203H43.611L44.115 13H41.505L41.325 6.34003L39.237 11.452H36.825Z"
+            />
+            <path
+              d="M53.8194 13H46.2774V1.01203H53.8194V3.40603H48.9774V5.60203H53.4414V7.99603H48.9774V10.606H53.8194V13Z"
+            />
+            <path
+              d="M62.3907 13L58.4667 5.11603V13H55.8927V1.01203H59.2047L63.1467 9.27403V1.01203H65.7207V13H62.3907Z"
+            />
+            <path
+              d="M76.2467 3.40603H73.0247V13H70.3247V3.40603H67.1027V1.01203H76.2467V3.40603Z"
+            />
+            <path d="M84.2061 13H81.5061V1.01203H84.2061V13Z" />
+            <path
+              d="M93.1348 13L89.2108 5.11603V13H86.6368V1.01203H89.9488L93.8908 9.27403V1.01203H96.4648V13H93.1348Z"
+            />
+            <path
+              d="M101.501 13H98.8009V1.01203H106.415V3.40603H101.501V5.96203H106.037V8.35603H101.501V13Z"
+            />
+            <path
+              d="M117.135 4.50403V9.50803C117.135 10.528 116.751 11.398 115.983 12.118C115.227 12.826 114.063 13.18 112.491 13.18C110.919 13.18 109.749 12.826 108.981 12.118C108.225 11.398 107.847 10.528 107.847 9.50803V4.50403C107.847 3.48403 108.225 2.62003 108.981 1.91203C109.749 1.19203 110.919 0.832031 112.491 0.832031C114.063 0.832031 115.227 1.19203 115.983 1.91203C116.751 2.62003 117.135 3.48403 117.135 4.50403ZM114.435 9.27403V4.73803C114.435 3.73003 113.787 3.22603 112.491 3.22603C111.195 3.22603 110.547 3.73003 110.547 4.73803V9.27403C110.547 10.282 111.195 10.786 112.491 10.786C113.787 10.786 114.435 10.282 114.435 9.27403Z"
+            />
+            <path
+              d="M126.139 13L123.493 9.27403H121.909V13H119.209V1.01203H124.195C125.623 1.01203 126.643 1.29403 127.255 1.85803C127.879 2.41003 128.191 3.26203 128.191 4.41403V5.89003C128.191 7.40203 127.609 8.40403 126.445 8.89603L129.343 13H126.139ZM125.491 5.62003V4.66603C125.491 4.21003 125.383 3.88603 125.167 3.69403C124.963 3.50203 124.591 3.40603 124.051 3.40603H121.909V6.93403H124.051C124.603 6.93403 124.981 6.83203 125.185 6.62803C125.389 6.42403 125.491 6.08803 125.491 5.62003Z"
+            />
+            <path
+              d="M135.473 11.452L133.385 6.34003L133.205 13H130.595L131.099 1.01203H133.799L136.679 8.64403L139.559 1.01203H142.259L142.763 13H140.153L139.973 6.34003L137.885 11.452H135.473Z"
+            />
+            <path
+              d="M151.19 1.01203L154.862 13H152.054L151.406 10.66H147.392L146.744 13H143.936L147.59 1.01203H151.19ZM149.39 3.38803L148.004 8.41003H150.758L149.39 3.38803Z"
+            />
+            <path
+              d="M164.401 3.40603H161.179V13H158.479V3.40603H155.257V1.01203H164.401V3.40603Z"
+            />
+            <path d="M168.581 13H165.881V1.01203H168.581V13Z" />
+            <path
+              d="M180.03 4.50403V9.50803C180.03 10.528 179.646 11.398 178.878 12.118C178.122 12.826 176.958 13.18 175.386 13.18C173.814 13.18 172.644 12.826 171.876 12.118C171.12 11.398 170.742 10.528 170.742 9.50803V4.50403C170.742 3.48403 171.12 2.62003 171.876 1.91203C172.644 1.19203 173.814 0.832031 175.386 0.832031C176.958 0.832031 178.122 1.19203 178.878 1.91203C179.646 2.62003 180.03 3.48403 180.03 4.50403ZM177.33 9.27403V4.73803C177.33 3.73003 176.682 3.22603 175.386 3.22603C174.09 3.22603 173.442 3.73003 173.442 4.73803V9.27403C173.442 10.282 174.09 10.786 175.386 10.786C176.682 10.786 177.33 10.282 177.33 9.27403Z"
+            />
+            <path
+              d="M188.602 13L184.678 5.11603V13H182.104V1.01203H185.416L189.358 9.27403V1.01203H191.932V13H188.602Z"
+            />
+          </svg>
+
+          <hr />
+        </div>
+
+        <!-- Payer -->
+        <article class="payer">
+          <table class="payer__table full-width">
+            <thead>
+              <tr>
+                <th>Jane Williams</th>
+                <th>Total: <span class="payer-total">$200</span></th>
+                <th>Percentage: <span class="payer-total">50%</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="row-payment-type row" colspan="3">
+                  <div class="heading">
+                    Payment Type
+                    <span class="heading__subtext"> (CHOOSE ONE)</span>
+                  </div>
+                  <div class="cards">
+                    <!-- AMEX Option-->
+                    <label class="cards__container-radio">
+                      <svg
+                        class="cards-icons"
+                        viewBox="0 0 40 40"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M2.49997 8H37.5C38.8801 8 40 8.93487 40 10.0879V29.9132C40 31.0651 38.8801 32 37.5 32H2.49997C1.11871 32.0001 0 31.0651 0 29.9133V10.0879C0 8.93487 1.11995 8 2.49997 8Z"
+                          fill="#26A6D1"
+                        />
+                        <path
+                          d="M6.45001 15.6243L2.49997 24.3656H7.22872L7.81495 22.9718H9.15493L9.74116 24.3656H14.9462V23.3018L15.41 24.3656H18.1024L18.5662 23.2794V24.3656H29.3913L30.7075 23.008L31.9401 24.3656L37.5 24.3768L33.5375 20.0193L37.5 15.6243H32.0263L30.745 16.9567L29.5513 15.6243H17.775L16.7638 17.8805L15.7289 15.6243H11.01V16.6518L10.485 15.6243C10.485 15.6243 6.45001 15.6243 6.45001 15.6243ZM7.365 16.8655H9.67001L12.2901 22.7931V16.8655H14.8151L16.8388 21.1156L18.7039 16.8655H21.2163V23.138H19.6876L19.6751 18.2229L17.4463 23.138H16.0787L13.8375 18.2229V23.138H10.6925L10.0962 21.7318H6.87501L6.28001 23.1368H4.59495L7.365 16.8655ZM22.615 16.8655H28.8312L30.7325 18.9193L32.695 16.8655H34.5963L31.7075 20.0181L34.5963 23.1343H32.6088L30.7075 21.0567L28.735 23.1343H22.615V16.8655ZM8.48631 17.9268L7.42504 20.4319H9.54635L8.48631 17.9268ZM24.1501 18.1643V19.3093H27.5413V20.5855H24.1501V21.8356H27.9538L29.7213 19.9944L28.0288 18.1632H24.1501V18.1643Z"
+                          fill="white"
+                        />
+                      </svg>
+                      <input type="radio" name="radio-amex" />
+                      <span class="checkmark"></span>
+                    </label>
+                    <!-- MASTER CARD Option-->
+                    <label class="cards__container-radio">
+                      <svg
+                        class="cards-icons"
+                        viewBox="0 0 40 40"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect
+                          y="8"
+                          width="40"
+                          height="24"
+                          rx="2"
+                          fill="#E9ECEF"
+                        />
+                        <path
+                          d="M22.9941 20.4993C22.9941 24.6419 19.6382 27.9986 15.4971 27.9986C11.3559 27.9986 8 24.6412 8 20.4993C8 16.3574 11.3567 13 15.4971 13C19.6374 13 22.9941 16.3574 22.9941 20.4993Z"
+                          fill="#E2574C"
+                        />
+                        <path
+                          d="M24.5008 13C22.8194 13 21.2716 13.5602 20.0207 14.4954L20.0267 14.4961C20.2727 14.7338 20.5441 14.9011 20.7534 15.1748L19.1935 15.1995C18.949 15.4463 18.7263 15.7148 18.5163 15.9938H21.267C21.4763 16.245 21.6697 16.4632 21.8453 16.7407H18.0176C17.8774 16.9822 17.7477 17.2304 17.6344 17.4883H22.281C22.4025 17.7455 22.5112 17.9398 22.6035 18.2121H17.3592C17.276 18.4708 17.2048 18.7355 17.1507 19.0054H22.8232C22.8787 19.265 22.9214 19.5049 22.9507 19.7494H17.0382C17.0134 19.9962 17.0007 20.2466 17.0007 20.4994H22.9934C22.9934 20.7649 22.9746 21.0108 22.9477 21.2493H17.0382C17.0637 21.5036 17.1012 21.7533 17.1507 21.9993H22.8142C22.7557 22.2423 22.6882 22.4867 22.6034 22.7402H17.342C17.4214 22.9967 17.5182 23.2456 17.6239 23.4886H22.281C22.1521 23.7616 22.0058 23.9798 21.8446 24.2355H18.0042C18.1557 24.498 18.323 24.7484 18.5044 24.9884L21.2671 25.0297C21.0316 25.3123 20.7294 25.4826 20.4542 25.7301C20.4691 25.7421 20.0139 25.7286 19.1177 25.7144C20.4811 27.1213 22.3867 27.9987 24.5007 27.9987C28.6426 27.9987 32 24.6412 32 20.4994C32 16.3576 28.6434 13 24.5008 13Z"
+                          fill="#F4B459"
+                        />
+                      </svg>
+                      <input type="radio" name="radio-mastercard" />
+                      <span class="checkmark"></span>
+                    </label>
+                    <!-- VISA Option-->
+                    <label class="cards__container-radio">
+                      <svg
+                        class="cards-icons"
+                        viewBox="0 0 40 40"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g clip-path="url(#clip0)">
+                          <path
+                            d="M40 29.9428C40 31.0789 38.9414 32 37.6355 32H2.36445C1.05859 32.0001 0 31.0789 0 29.9428V10.0572C0 8.92099 1.05859 8 2.36445 8H37.6355C38.9415 8 40 8.92106 40 10.0572V29.9428Z"
+                            fill="white"
+                          />
+                          <path
+                            d="M8.87809 20.1589L7.93887 15.6534C7.77833 15.0321 7.31114 14.8472 6.72739 14.8228H2.42129L2.38293 15.0286C5.73676 15.8417 7.9559 17.8031 8.87809 20.1589Z"
+                            fill="#F79F1A"
+                          />
+                          <path
+                            d="M18.8557 14.9131H16.0735L14.3358 25.1105H17.1135L18.8557 14.9131Z"
+                            fill="#059BBF"
+                          />
+                          <path
+                            d="M10.5738 25.1004L14.9496 14.9202H12.005L9.28289 21.8755L8.99234 20.8253C8.45875 19.562 6.93375 17.7436 5.14343 16.5989L7.63171 25.1038L10.5738 25.1004Z"
+                            fill="#059BBF"
+                          />
+                          <path
+                            d="M26.7915 21.7771C26.8018 20.6194 26.0584 19.7363 24.4565 19.007C23.483 18.5359 22.8897 18.2217 22.8968 17.7437C22.8968 17.3213 23.3993 16.8677 24.488 16.8677C25.399 16.8537 26.055 17.0526 26.568 17.2585L26.8194 17.3738L27.1965 15.1646C26.645 14.9586 25.7829 14.7388 24.7047 14.7388C21.958 14.7388 20.0246 16.1209 20.0071 18.1031C19.9896 19.569 21.3893 20.3856 22.4432 20.8742C23.525 21.3721 23.8879 21.6908 23.881 22.1375C23.874 22.8206 23.0189 23.1321 22.2197 23.1321C21.1064 23.1321 20.5166 22.9785 19.6018 22.5974L19.2464 22.4342L18.8559 24.7192C19.5046 25.0028 20.705 25.2506 21.9511 25.2609C24.8719 25.2609 26.7705 23.8963 26.7915 21.7771Z"
+                            fill="#059BBF"
+                          />
+                          <path
+                            d="M30.0963 23.5823C30.4139 23.5823 33.2512 23.5858 33.6562 23.5858C33.7399 23.9409 33.9947 25.1143 33.9947 25.1143H36.5737L34.3227 14.9238H32.1764C31.5098 14.9238 31.0144 15.1053 30.7211 15.7683L26.5926 25.1143H29.5138C29.5136 25.1143 29.9881 23.8581 30.0963 23.5823ZM32.0017 18.644C31.988 18.6719 32.2322 18.0542 32.3718 17.6703L32.5602 18.5497C32.5602 18.5497 33.0908 20.9858 33.2024 21.4953H30.8955C31.1259 20.9091 32.0017 18.644 32.0017 18.644Z"
+                            fill="#059BBF"
+                          />
+                          <path
+                            d="M0 29H40V30C40 31.1046 39.1046 32 38 32H2C0.895431 32 0 31.1046 0 30V29Z"
+                            fill="#F79F1A"
+                          />
+                          <path
+                            d="M40 11L0 11L8.74228e-08 10C1.83987e-07 8.89543 0.895432 8 2 8L38 8C39.1046 8 40 8.89543 40 10L40 11Z"
+                            fill="#059BBF"
+                          />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0">
+                            <rect width="40" height="40" fill="white" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                      <input type="radio" name="radio-visa" />
+                      <span class="checkmark"></span>
+                    </label>
+                    <!-- DISCOVER Option-->
+                    <label class="cards__container-radio">
+                      <svg
+                        class="cards-icons"
+                        viewBox="0 0 40 40"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect
+                          y="8"
+                          width="40"
+                          height="24"
+                          rx="2"
+                          fill="#34495E"
+                        />
+                        <path
+                          d="M24.0497 19.6363C24.0525 18.97 23.8027 18.3028 23.3 17.8C22.7961 17.2961 22.1272 17.0465 21.4595 17.0505C21.4564 17.0505 21.4533 17.0503 21.4499 17.0503C20.0001 17.0503 18.8501 18.2 18.8501 19.6503C18.8501 21.0862 20.0143 22.25 21.4499 22.25C22.9002 22.25 24.0501 21.1001 24.0501 19.6503C24.0501 19.6455 24.0497 19.641 24.0497 19.6363Z"
+                          fill="#F26E21"
+                        />
+                        <path
+                          d="M18.3666 20.7499C17.978 21.1389 17.6193 21.2908 17.233 21.2991C16.2919 21.2906 15.5999 20.5937 15.5999 19.6C15.5999 19.0998 15.7893 18.6898 16.0894 18.3396C16.3707 18.0725 16.7332 17.8999 17.15 17.8999C17.5999 17.8999 17.95 18.0499 18.3498 18.4499V17.2999C17.9501 17.1001 17.5998 17 17.15 17C16.5144 17.0454 15.9151 17.3022 15.4554 17.7055C15.323 17.8247 15.196 17.9563 15.0883 18.1069C14.7526 18.5421 14.5496 19.075 14.5496 19.6502C14.5496 21.0999 15.7 22.1999 17.1499 22.1999C17.1569 22.1999 17.1639 22.1993 17.1708 22.1992C17.1805 22.1993 17.1901 22.1999 17.1998 22.1999C17.5998 22.1999 17.95 22.1001 18.4 21.9001L18.3666 20.7499C18.3497 20.7667 18.3833 20.7824 18.3666 20.7984V20.7499Z"
+                          fill="#E7E8E3"
+                        />
+                        <path
+                          d="M27.3323 17.7158L26.2 20.4997L24.8999 17.1995H23.8501L25.8999 22.2494H26.4499L28.5999 17.1995H27.5501L27.3323 17.7158Z"
+                          fill="#E7E8E3"
+                        />
+                        <path
+                          d="M29.0001 19.3995V22.0997H31.7002H31.75V21.2994H30.9H30.0001V20.3996V19.9498H31.7002V19.0995H30.0001V18.0496H31.75V17.1995H29.0001V19.3995Z"
+                          fill="#E7E8E3"
+                        />
+                        <path
+                          d="M6.40025 17.1995H5V22.0997H6.40018C7.15006 22.0997 7.69997 21.8995 8.14996 21.5495C8.69987 21.0995 9.05002 20.3997 9.05002 19.6498C9.05009 18.1994 7.99992 17.1995 6.40025 17.1995ZM7.55013 20.8997C7.25011 21.1496 6.85011 21.2994 6.25007 21.2994H5.95005V18.0495H6.20001C6.80005 18.0495 7.20005 18.1495 7.50014 18.4494C7.85008 18.7492 8.05019 19.1995 8.05019 19.6496C8.10018 20.0996 7.90021 20.5994 7.55013 20.8997Z"
+                          fill="#E7E8E3"
+                        />
+                        <path
+                          d="M10.4503 17.1995H9.50027V22.0995H10.4503V17.1995Z"
+                          fill="#E7E8E3"
+                        />
+                        <path
+                          d="M12.85 19.0996C12.2501 18.8997 12.1 18.7496 12.1 18.4997C12.1 18.1997 12.4 17.9497 12.8 17.9497C13.1 17.9497 13.35 18.0498 13.6 18.3498L14.1001 17.6998C13.7 17.3497 13.2002 17.1499 12.6502 17.1499C11.7999 17.1499 11.0999 17.7499 11.0999 18.5497C11.0999 19.2498 11.4002 19.5498 12.3001 19.8998C12.7001 20.0496 12.8501 20.0998 12.9503 20.1997C13.1499 20.2996 13.2501 20.4998 13.2501 20.6995C13.2501 21.0996 12.9503 21.3997 12.5 21.3997C12.0496 21.3997 11.65 21.1497 11.4499 20.7497L10.8499 21.3497C11.3001 21.9997 11.8501 22.2996 12.5501 22.2996C13.55 22.2996 14.2497 21.6496 14.2497 20.6995C14.2498 19.8497 13.9501 19.4997 12.85 19.0996Z"
+                          fill="#E7E8E3"
+                        />
+                        <path
+                          d="M34.4502 20.0494C35.1999 19.8996 35.6001 19.3994 35.6001 18.6496C35.6001 17.7498 34.95 17.1995 33.8502 17.1995H32.4001V22.0997H33.35V20.1494H33.5002L34.8499 22.0997H36L34.4502 20.0494ZM33.6499 19.4494H33.3501V17.9495H33.6499C34.25 17.9495 34.6001 18.1994 34.6001 18.6998C34.6001 19.1995 34.25 19.4494 33.6499 19.4494Z"
+                          fill="#E7E8E3"
+                        />
+                      </svg>
+
+                      <input type="radio" name="radio-discover" />
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+              <!-- Row: Card Info -->
+              <tr>
+                <td class="row-card-info row" colspan="3">
+                  <div class="card-info__inputs">
+                    <label for="cnumber">CARD NUMBER</label>
+                    <input
+                      type="text"
+                      name="cnumber"
+                      value=""
+                      class="first-input-border"
+                    />
+                  </div>
+                  <div class="card-info__inputs">
+                    <label for="expdate">EXP. DATE</label>
+                    <input
+                      type="text"
+                      name="expdate"
+                      value=""
+                      class="side-input-border"
+                    />
+                  </div>
+                  <div class="card-info__inputs">
+                    <label for="cvv">CVV</label>
+                    <input
+                      type="text"
+                      name="cvv"
+                      value=""
+                      class="last-input-border side-input-border"
+                    />
+                  </div>
+                </td>
+              </tr>
+              <!-- Row: Address Info -->
+              <tr>
+                <td class="row-address-info row" colspan="3">
+                  <div class="card-address__inputs input-1">
+                    <label for="billing-address">BILLING ADDRESS</label>
+                    <input
+                      type="text"
+                      name="billing-address"
+                      value=""
+                      class="first-input-border"
+                    />
+                  </div>
+                  <div class="card-address__inputs input-2">
+                    <label for="city">CITY</label>
+                    <input
+                      type="text"
+                      name="city"
+                      value=""
+                      class="side-input-border"
+                    />
+                  </div>
+                  <div class="card-address__inputs input-3">
+                    <label for="state">STATE</label>
+                    <input
+                      type="text"
+                      name="state"
+                      value=""
+                      class="side-input-border"
+                    />
+                  </div>
+                  <div class="card-address__inputs input-4">
+                    <label for="zip">ZIP</label>
+                    <input
+                      type="text"
+                      name="zip"
+                      value=""
+                      class="last-input-border side-input-border"
+                    />
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+      </section>
+
+      <!-- Signature Section -->
+      <section class="content__signature">
+        <div class="signature__container container">
+          <div class="signature-name signature-inputs">
+            <input type="text" name="sign-name" value="" />
+            <hr />
+            Jane Williams
+          </div>
+          <div class="signature-date signature-inputs">
+            <input type="text" name="sign-date" value="" />
+            <hr />
+            Date
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
