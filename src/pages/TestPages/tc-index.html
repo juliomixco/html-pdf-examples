@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>T&C Page</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,700"
+      rel="stylesheet"
+    />
+    <style type="text/css">
+      /* 1. Base Styles
+      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+      html {
+        box-sizing: border-box;
+      }
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        color: #848c95;
+        font-size: 8px;
+        word-break: break-word;
+        font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+        position: relative;
+      }
+
+      .top-bar {
+        height: 100%;
+        background-color: #f37321;
+      }
+
+      .page-wrapper {
+        width: 100%;
+        height: 100%;
+      }
+
+      .container {
+        width: 100%;
+        margin: 0 auto;
+        padding: 3px 45px 0 45px;
+        box-sizing: border-box;
+      }
+
+      /* 2. Misc
+      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+      hr {
+        border-width: 0;
+        border-top: 1px solid #dee2e6;
+      }
+
+      .justify-content {
+        text-align: justify;
+      }
+
+      /* 3. Page Sections
+      –––––––––––––––––––––––––––––––––––––––––––––––––– */
+      /* 3.1 Header
+      –––––––––––––––––––––––– */
+      .content__header {
+        padding: 0;
+        width: 100%;
+        height: auto;
+        position: relative;
+        margin-bottom: 35px;
+      }
+
+      .header__logo {
+        width: 14%;
+        height: 50px;
+        position: relative;
+      }
+
+      .logo-image {
+        top: 0;
+        left: 0;
+        width: 60px;
+        height: 60px;
+        position: absolute;
+      }
+
+      .header__description {
+        top: 0;
+        right: 0;
+        width: 86%;
+        height: 60px;
+        position: absolute;
+        vertical-align: middle;
+      }
+
+      .heaader__description .description__title {
+        display: inline-block;
+      }
+
+      .header__description .description__title .title__text {
+        width: 160px;
+        height: auto;
+        margin-left: -10px;
+      }
+
+      .header__description .description__title .title__text path {
+        fill: #343a40;
+      }
+
+      .header__description .description__details {
+        color: #6c7680;
+        font-size: 11px;
+        display: inline-block;
+        top: 0;
+        right: 240px;
+        position: absolute;
+      }
+
+      .header__description .description__details .order__icons {
+        width: 14px;
+        height: auto;
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+
+      .header__description .description__details .order__icons path {
+        fill: #f9a01b;
+      }
+
+      /* 3.2 Terms and Conditions Section
+      ––––––––––––––––––––––––––––––––––– */
+      .content__tnc .tnc__title {
+        width: 140px;
+        height: 16px;
+      }
+
+      .content__tnc .tnc__title path {
+        fill: #495057;
+      }
+
+      /* 3.3 Individual Terms articles
+      ––––––––––––––––––––––––––––––––––– */
+      .content__tnc .container {
+        padding-bottom: 0;
+      }
+
+      .terms__title {
+        text-transform: uppercase;
+        font-weight: bold;
+        color: #4a5058;
+      }
+
+      /* 3.4 Signature Section
+      –––––––––––––––––––––––– */
+      .content__signature {
+        width: 100%;
+        margin-top: 150px;
+        page-break-inside: avoid;
+      }
+
+      .signature-inputs {
+        color: #868e96;
+        font-size: 9px;
+        display: inline-block;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .signature-inputs input[type="text"] {
+        border: none;
+        width: 100%;
+      }
+
+      .signature-name {
+        width: 60%;
+        margin-right: 7%;
+      }
+
+      .signature-date {
+        width: 30%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <!-- Header -->
+      <header class="container content__header">
+        <div class="header__logo">
+          <img
+            src="data:image/png;base64,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"
+            alt="Miami Heat Logo"
+            class="logo-image"
+          />
+        </div>
+        <div class="header__description">
+          <div class="description__title">
+            <svg
+              class="title__text"
+              viewBox="0 0 288 23"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.43199 19.248L5.71999 10.16L5.39999 22H0.759995L1.65599 0.687983H6.45599L11.576 14.256L16.696 0.687983H21.496L22.392 22H17.752L17.432 10.16L13.72 19.248H9.43199Z"
+              />
+              <path d="M31.1962 22H26.3962V0.687983H31.1962V22Z" />
+              <path
+                d="M46.6535 0.687983L53.1815 22H48.1895L47.0375 17.84H39.9015L38.7495 22H33.7575L40.2535 0.687983H46.6535ZM43.4535 4.91198L40.9895 13.84H45.8855L43.4535 4.91198Z"
+              />
+              <path
+                d="M63.932 19.248L60.22 10.16L59.9 22H55.26L56.156 0.687983H60.956L66.076 14.256L71.196 0.687983H75.996L76.892 22H72.252L71.932 10.16L68.22 19.248H63.932Z"
+              />
+              <path d="M85.6962 22H80.8962V0.687983H85.6962V22Z" />
+              <path
+                d="M113.216 22H108.416V13.424H101.536V22H96.7362V0.687983H101.536V9.16798H108.416V0.687983H113.216V22Z"
+              />
+              <path
+                d="M130.769 22H117.361V0.687983H130.769V4.94398H122.161V8.84798H130.097V13.104H122.161V17.744H130.769V22Z"
+              />
+              <path
+                d="M145.591 0.687983L152.119 22H147.127L145.975 17.84H138.839L137.687 22H132.695L139.191 0.687983H145.591ZM142.391 4.91198L139.927 13.84H144.823L142.391 4.91198Z"
+              />
+              <path
+                d="M169.077 4.94398H163.35V22H158.549V4.94398H152.822V0.687983H169.077V4.94398Z"
+              />
+              <path d="M183.227 22H178.428V0.687983H183.227V22Z" />
+              <path
+                d="M199.101 22L192.125 7.98398V22H187.549V0.687983H193.437L200.445 15.376V0.687983H205.021V22H199.101Z"
+              />
+              <path
+                d="M225.974 0.687983L219.958 22H213.11L207.094 0.687983H212.022L216.534 17.648L221.046 0.687983H225.974Z"
+              />
+              <path
+                d="M244.081 6.89598V15.792C244.081 17.6053 243.398 19.152 242.033 20.432C240.689 21.6906 238.619 22.32 235.825 22.32C233.03 22.32 230.95 21.6906 229.585 20.432C228.241 19.152 227.569 17.6053 227.569 15.792V6.89598C227.569 5.08265 228.241 3.54665 229.585 2.28798C230.95 1.00798 233.03 0.367981 235.825 0.367981C238.619 0.367981 240.689 1.00798 242.033 2.28798C243.398 3.54665 244.081 5.08265 244.081 6.89598ZM239.281 15.376V7.31198C239.281 5.51998 238.129 4.62398 235.825 4.62398C233.521 4.62398 232.369 5.51998 232.369 7.31198V15.376C232.369 17.168 233.521 18.064 235.825 18.064C238.129 18.064 239.281 17.168 239.281 15.376Z"
+              />
+              <path d="M252.727 22H247.928V0.687983H252.727V22Z" />
+              <path
+                d="M261.369 7.66398V15.024C261.369 16.0266 261.582 16.7733 262.009 17.264C262.435 17.7333 263.214 17.968 264.345 17.968C266.03 17.968 267.865 17.7973 269.849 17.456L270.521 21.648C268.409 22.096 266.35 22.32 264.345 22.32C261.742 22.32 259.79 21.744 258.489 20.592C257.209 19.4186 256.569 17.8186 256.569 15.792V6.89598C256.569 4.86932 257.209 3.27998 258.489 2.12798C259.79 0.954648 261.742 0.367981 264.345 0.367981C266.35 0.367981 268.409 0.591981 270.521 1.03998L269.849 5.23198C267.865 4.89065 266.03 4.71998 264.345 4.71998C263.214 4.71998 262.435 4.96532 262.009 5.45598C261.582 5.92532 261.369 6.66132 261.369 7.66398Z"
+              />
+              <path
+                d="M287.144 22H273.736V0.687983H287.144V4.94398H278.536V8.84798H286.472V13.104H278.536V17.744H287.144V22Z"
+              />
+            </svg>
+            <div class="description__details">
+              <svg
+                class="order__icons"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M3 3.05176e-05H11.4142L15 3.58582V14C15 15.1046 14.1046 16 13 16H3C1.89543 16 1 15.1046 1 14V2.00003C1 0.895461 1.89543 3.05176e-05 3 3.05176e-05ZM9 2.00003H3V14H13V6.00003H11C9.89543 6.00003 9 5.1046 9 4.00003V2.00003ZM11 2.41424V4.00003H12.5858L11 2.41424Z"
+                />
+              </svg>
+              <span>Order #135772</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Terms & Conditions Section -->
+      <section class="content__tnc">
+        <div class="container">
+          <svg
+            class="tnc__title"
+            viewBox="0 0 193 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9.36 3.40603H6.138V13H3.438V3.40603H0.216003V1.01203H9.36V3.40603Z"
+              fill="#495057"
+            />
+            <path
+              d="M18.2921 13H10.7501V1.01203H18.2921V3.40603H13.4501V5.60203H17.9141V7.99603H13.4501V10.606H18.2921V13Z"
+              fill="#495057"
+            />
+            <path
+              d="M27.2953 13L24.6493 9.27403H23.0653V13H20.3653V1.01203H25.3513C26.7793 1.01203 27.7993 1.29403 28.4113 1.85803C29.0353 2.41003 29.3473 3.26203 29.3473 4.41403V5.89003C29.3473 7.40203 28.7653 8.40403 27.6013 8.89603L30.4993 13H27.2953ZM26.6473 5.62003V4.66603C26.6473 4.21003 26.5393 3.88603 26.3233 3.69403C26.1193 3.50203 25.7473 3.40603 25.2073 3.40603H23.0653V6.93403H25.2073C25.7593 6.93403 26.1373 6.83203 26.3413 6.62803C26.5453 6.42403 26.6473 6.08803 26.6473 5.62003Z"
+              fill="#495057"
+            />
+            <path
+              d="M36.6297 11.452L34.5417 6.34003L34.3617 13H31.7517L32.2557 1.01203H34.9557L37.8357 8.64403L40.7157 1.01203H43.4157L43.9197 13H41.3097L41.1297 6.34003L39.0417 11.452H36.6297Z"
+              fill="#495057"
+            />
+            <path
+              d="M53.9841 9.63403C53.9841 10.474 53.8701 11.14 53.6421 11.632C53.4261 12.112 52.9881 12.49 52.3281 12.766C51.6801 13.042 50.7681 13.18 49.5921 13.18C48.1401 13.18 46.8501 12.922 45.7221 12.406L46.1721 10.318C47.4081 10.702 48.5601 10.894 49.6281 10.894C50.3121 10.894 50.7561 10.81 50.9601 10.642C51.1761 10.474 51.2841 10.132 51.2841 9.61603C51.2841 9.30403 51.2721 9.08803 51.2481 8.96803C51.2361 8.83603 51.1521 8.70403 50.9961 8.57203C50.8521 8.42803 50.6601 8.32603 50.4201 8.26603C50.1801 8.19403 49.7961 8.09803 49.2681 7.97803C47.8281 7.66603 46.9101 7.28203 46.5141 6.82603C46.1301 6.37003 45.9381 5.48803 45.9381 4.18003C45.9381 2.94403 46.2261 2.08003 46.8021 1.58803C47.3781 1.08403 48.4701 0.832031 50.0781 0.832031C51.2781 0.832031 52.4901 0.964031 53.7141 1.22803L53.4441 3.49603C52.1121 3.26803 51.0021 3.15403 50.1141 3.15403C49.5141 3.15403 49.1181 3.22603 48.9261 3.37003C48.7341 3.51403 48.6381 3.80803 48.6381 4.25203C48.6381 4.82803 48.7221 5.18803 48.8901 5.33203C49.0701 5.46403 49.6341 5.64403 50.5821 5.87203C51.1341 6.00403 51.5901 6.13003 51.9501 6.25003C52.3221 6.37003 52.6401 6.51403 52.9041 6.68203C53.1681 6.85003 53.3661 7.00603 53.4981 7.15003C53.6421 7.29403 53.7501 7.51003 53.8221 7.79803C53.8941 8.07403 53.9361 8.33803 53.9481 8.59003C53.9721 8.83003 53.9841 9.17803 53.9841 9.63403Z"
+              fill="#495057"
+            />
+            <path
+              d="M65.9164 1.01203L69.5884 13H66.7804L66.1324 10.66H62.1184L61.4704 13H58.6624L62.3164 1.01203H65.9164ZM64.1164 3.38803L62.7304 8.41003H65.4844L64.1164 3.38803Z"
+              fill="#495057"
+            />
+            <path
+              d="M77.4356 13L73.5116 5.11603V13H70.9376V1.01203H74.2496L78.1916 9.27403V1.01203H80.7656V13H77.4356Z"
+              fill="#495057"
+            />
+            <path
+              d="M91.7956 9.88603C91.7956 10.774 91.4656 11.518 90.8056 12.118C90.1456 12.706 89.1256 13 87.7456 13H83.1016V1.01203H87.7456C89.1256 1.01203 90.1456 1.30603 90.8056 1.89403C91.4656 2.48203 91.7956 3.22603 91.7956 4.12603V9.88603ZM89.0956 9.14803V4.86403C89.0956 4.36003 88.9756 3.99403 88.7356 3.76603C88.4956 3.52603 88.0576 3.40603 87.4216 3.40603H85.8016V10.606H87.4216C88.0576 10.606 88.4956 10.492 88.7356 10.264C88.9756 10.024 89.0956 9.65203 89.0956 9.14803Z"
+              fill="#495057"
+            />
+            <path
+              d="M100.069 4.93603V9.07603C100.069 9.64003 100.189 10.06 100.429 10.336C100.669 10.6 101.107 10.732 101.743 10.732C102.691 10.732 103.723 10.636 104.839 10.444L105.217 12.802C104.029 13.054 102.871 13.18 101.743 13.18C100.279 13.18 99.1808 12.856 98.4488 12.208C97.7288 11.548 97.3688 10.648 97.3688 9.50803V4.50403C97.3688 3.36403 97.7288 2.47003 98.4488 1.82203C99.1808 1.16203 100.279 0.832031 101.743 0.832031C102.871 0.832031 104.029 0.958032 105.217 1.21003L104.839 3.56803C103.723 3.37603 102.691 3.28003 101.743 3.28003C101.107 3.28003 100.669 3.41803 100.429 3.69403C100.189 3.95803 100.069 4.37203 100.069 4.93603Z"
+              fill="#495057"
+            />
+            <path
+              d="M116.043 4.50403V9.50803C116.043 10.528 115.659 11.398 114.891 12.118C114.135 12.826 112.971 13.18 111.399 13.18C109.827 13.18 108.657 12.826 107.889 12.118C107.133 11.398 106.755 10.528 106.755 9.50803V4.50403C106.755 3.48403 107.133 2.62003 107.889 1.91203C108.657 1.19203 109.827 0.832031 111.399 0.832031C112.971 0.832031 114.135 1.19203 114.891 1.91203C115.659 2.62003 116.043 3.48403 116.043 4.50403ZM113.343 9.27403V4.73803C113.343 3.73003 112.695 3.22603 111.399 3.22603C110.103 3.22603 109.455 3.73003 109.455 4.73803V9.27403C109.455 10.282 110.103 10.786 111.399 10.786C112.695 10.786 113.343 10.282 113.343 9.27403Z"
+              fill="#495057"
+            />
+            <path
+              d="M124.615 13L120.691 5.11603V13H118.117V1.01203H121.429L125.371 9.27403V1.01203H127.945V13H124.615Z"
+              fill="#495057"
+            />
+            <path
+              d="M138.975 9.88603C138.975 10.774 138.645 11.518 137.985 12.118C137.325 12.706 136.305 13 134.925 13H130.281V1.01203H134.925C136.305 1.01203 137.325 1.30603 137.985 1.89403C138.645 2.48203 138.975 3.22603 138.975 4.12603V9.88603ZM136.275 9.14803V4.86403C136.275 4.36003 136.155 3.99403 135.915 3.76603C135.675 3.52603 135.237 3.40603 134.601 3.40603H132.981V10.606H134.601C135.237 10.606 135.675 10.492 135.915 10.264C136.155 10.024 136.275 9.65203 136.275 9.14803Z"
+              fill="#495057"
+            />
+            <path d="M143.829 13H141.129V1.01203H143.829V13Z" fill="#495057" />
+            <path
+              d="M154.45 3.40603H151.228V13H148.528V3.40603H145.306V1.01203H154.45V3.40603Z"
+              fill="#495057"
+            />
+            <path d="M158.63 13H155.93V1.01203H158.63V13Z" fill="#495057" />
+            <path
+              d="M170.079 4.50403V9.50803C170.079 10.528 169.695 11.398 168.927 12.118C168.171 12.826 167.007 13.18 165.435 13.18C163.863 13.18 162.693 12.826 161.925 12.118C161.169 11.398 160.791 10.528 160.791 9.50803V4.50403C160.791 3.48403 161.169 2.62003 161.925 1.91203C162.693 1.19203 163.863 0.832031 165.435 0.832031C167.007 0.832031 168.171 1.19203 168.927 1.91203C169.695 2.62003 170.079 3.48403 170.079 4.50403ZM167.379 9.27403V4.73803C167.379 3.73003 166.731 3.22603 165.435 3.22603C164.139 3.22603 163.491 3.73003 163.491 4.73803V9.27403C163.491 10.282 164.139 10.786 165.435 10.786C166.731 10.786 167.379 10.282 167.379 9.27403Z"
+              fill="#495057"
+            />
+            <path
+              d="M178.65 13L174.726 5.11603V13H172.152V1.01203H175.464L179.406 9.27403V1.01203H181.98V13H178.65Z"
+              fill="#495057"
+            />
+            <path
+              d="M192.218 9.63403C192.218 10.474 192.104 11.14 191.876 11.632C191.66 12.112 191.222 12.49 190.562 12.766C189.914 13.042 189.002 13.18 187.826 13.18C186.374 13.18 185.084 12.922 183.956 12.406L184.406 10.318C185.642 10.702 186.794 10.894 187.862 10.894C188.546 10.894 188.99 10.81 189.194 10.642C189.41 10.474 189.518 10.132 189.518 9.61603C189.518 9.30403 189.506 9.08803 189.482 8.96803C189.47 8.83603 189.386 8.70403 189.23 8.57203C189.086 8.42803 188.894 8.32603 188.654 8.26603C188.414 8.19403 188.03 8.09803 187.502 7.97803C186.062 7.66603 185.144 7.28203 184.748 6.82603C184.364 6.37003 184.172 5.48803 184.172 4.18003C184.172 2.94403 184.46 2.08003 185.036 1.58803C185.612 1.08403 186.704 0.832031 188.312 0.832031C189.512 0.832031 190.724 0.964031 191.948 1.22803L191.678 3.49603C190.346 3.26803 189.236 3.15403 188.348 3.15403C187.748 3.15403 187.352 3.22603 187.16 3.37003C186.968 3.51403 186.872 3.80803 186.872 4.25203C186.872 4.82803 186.956 5.18803 187.124 5.33203C187.304 5.46403 187.868 5.64403 188.816 5.87203C189.368 6.00403 189.824 6.13003 190.184 6.25003C190.556 6.37003 190.874 6.51403 191.138 6.68203C191.402 6.85003 191.6 7.00603 191.732 7.15003C191.876 7.29403 191.984 7.51003 192.056 7.79803C192.128 8.07403 192.17 8.33803 192.182 8.59003C192.206 8.83003 192.218 9.17803 192.218 9.63403Z"
+              fill="#495057"
+            />
+          </svg>
+
+          <hr />
+        </div>
+      </section>
+
+      <!-- Payment Terms -->
+      <article class="content__terms container">
+        <h3 class="terms__title">Payment Terms:</h3>
+        <div class="terms__content justify-content">
+          <p>
+            With your purchase of a 1-year season ticket membership, unless you
+            choose to pay in full upfront, you will pay consecutive credit card
+            (including credit debit card) or ACH monthly installment payments
+            beginning during the month you purchase your season ticket
+            membership, and ending on February 15th, 2019. By making any season
+            ticket membership purchase, you are electing to purchase tickets for
+            any NBA Playoffs that follow the NBA Season for which you purchased
+            season tickets. Playoff tickets are an additional charge. Your
+            credit card or ACH account on file will be billed for any NBA
+            Playoffs for which you elected to purchase tickets on or about the
+            July 1 immediately following the relevant NBA Playoffs for all
+            Playoff home games played during such season, regardless of ticket
+            usage.
+          </p>
+          <p>
+            During any NBA Playoffs for which you elected to purchase tickets
+            and for which discounted pricing is offered to Season Ticket Members
+            for tickets, you will receive such discounted pricing so long as
+            your account is renewed for the immediately following season, and
+            remains in good standing. ACH payments shall not be deemed satisfied
+            until payment is received by the Miami HEAT (the “HEAT”). All sales
+            are final. Your season ticket purchase is non-refundable. You may
+            not cancel your season ticket purchase, your subscription, or your
+            purchase of goods or services, as applicable.
+          </p>
+        </div>
+      </article>
+
+      <!-- Returned Payment Fee & Delinquency Fee -->
+      <article class="content__terms container">
+        <h3 class="terms__title">Returned Payment Fee & Delinquency Fee:</h3>
+        <div class="terms__content justify-content">
+          <p>
+            We will charge you a fee if your payment instrument is not honored
+            or cannot be processed, even if your payment is honored on
+            subsequent presentment. This fee is $25 if the returned payment
+            amount is $50 or less, $30 if the returned payment amount is between
+            $50.01 and $300, $40 if the returned payment amount is between
+            $300.01 and $800, and up to 5% of the payment amount if the returned
+            payment amount exceeds $800. Any payment that is ten (10) or more
+            days delinquent is subject to a fee of up to 5% of the amount
+            overdue.
+          </p>
+        </div>
+      </article>
+
+      <!-- Returned Payment Fee & Delinquency Fee -->
+      <article class="content__terms container">
+        <h3 class="terms__title">License:</h3>
+        <div class="terms__content justify-content">
+          <p>
+            Your ticket purchase entitles you to certain tickets to certain HEAT
+            games. As between you and the HEAT, such tickets are owned by the
+            HEAT, and entitle you to a revocable license (the “License”). The
+            HEAT reserves the right to revoke the License granted by any ticket
+            by refunding the purchase price. The HEAT may also revoke the
+            License or any portion thereof and/or seek any other legal remedies
+            if you fail to make any payment due or breach any other term to
+            which you agreed including those contained herein and on the back of
+            any relevant individual ticket.
+          </p>
+        </div>
+      </article>
+
+      <!-- Aditional Terms & Conditions -->
+      <article class="content__terms container">
+        <h3 class="terms__title">Additional Terms & Conditions:</h3>
+        <div class="terms__content justify-content">
+          <p>
+            All purchases and renewals are subject to an annual fee of up to $50
+            per seat. All accounts with an address of record outside of the
+            State of Florida are also subject to an annual surcharge of $50 per
+            seat. Season tickets are revocable licenses. Season tickets will not
+            be released unless the account is in “good standing,” which means
+            being current in your payment schedule and not being in breach of
+            any other term to which you agreed including those contained herein
+            and on the back of any relevant individual ticket. Unpaid fees may
+            prevent your account from being considered in “good standing.”
+            Failure to adhere to any terms that apply to your account, including
+            failure to make timely payment (for any reason) shall entitle the
+            HEAT in its sole discretion to: deactivate your season ticket(s),
+            cancel your account and/or, in the case of credit card or ACH
+            payments, accelerate the balance due and charge any or all credit
+            cards on file for the remaining account balance.
+          </p>
+          <p>
+            An account cancellation will result in the deactivation of your
+            remaining tickets and the forfeiture of any amounts paid prior to
+            such cancellation. When an account uses multiple credit cards to
+            make a payment, it is the sole responsibility of the account holder
+            of record to maintain the account in “good standing.” Failure to
+            satisfy your entire payment plan at any time may result in
+            additional costs, including the HEAT’s right to retroactively revoke
+            your discounted Playoff pricing and charge the balance of the
+            relevant season’s full Playoff pricing to your account. Privilege of
+            renewal under these terms is extended only to the season ticket
+            member listed on the front of this invoice. The name that appears on
+            the top line of the address portion on the face of this invoice is
+            the season ticket member of record. When the season ticket member is
+            a corporate entity, the renewal must be executed by an officer of
+            the company. You must list the company name (first line) and the
+            designated employee (second line).
+          </p>
+          <p>
+            Renewal or transfer privileges are extended at the option of the
+            HEAT and are subject to revocation at any time. At any point during
+            the term of your membership, the HEAT reserves the right to relocate
+            your seat locations for any reasonable business purpose, as
+            determined by the HEAT in its sole discretion. Further, you agree to
+            be billed for any additional HEAT home preseason games added prior
+            to any NBA Season for which you purchase season tickets (i.e., any
+            preseason home games scheduled in addition to the three (3)
+            regularly scheduled preseason home games).
+          </p>
+          <p>
+            If: (a) you are ejected one (1) time during a season for verbal
+            abuse; or (b) your tickets are used by a fan who is ejected one (1)
+            time during a season for verbal abuse, you will be sent written
+            notice from us (with a copy to the NBA) advising you that your
+            season tickets will be revoked if you, or someone using your
+            tickets, is ejected from a game for verbal abuse for a second time
+            during such season. If you, or someone using your tickets is in fact
+            subsequently ejected from a game for a second time during the season
+            for verbal abuse, we will revoke your season tickets. Additional
+            terms apply to your account. Please log in to your online account
+            for details. We may amend these terms at any time. If any of these
+            terms is invalid, illegal or incapable of being enforced, all of the
+            other terms shall remain in full force and effect. We will not lose
+            our rights under this agreement because we delay or do not enforce
+            them.
+          </p>
+        </div>
+      </article>
+
+      <!-- Ticket Delivery -->
+      <article class="content__terms container">
+        <h3 class="terms__title">Ticket Delivery:</h3>
+        <div class="terms__content justify-content">
+          <p>
+            Paper tickets are not guaranteed. Tickets in your account will be
+            made available to you on the date selected by the HEAT in its sole
+            discretion and by any then-current method of ticketing, which may be
+            digital and/or mobile only (i.e., only available on your smart
+            phone).
+          </p>
+        </div>
+      </article>
+
+      <!-- Consent to receive communications from the Heat -->
+      <article class="content__terms container">
+        <h3 class="terms__title">
+          Consent to receive communications from the Heat:
+        </h3>
+        <div class="terms__content justify-content">
+          <p>
+            The HEAT often provides its season ticket members with information,
+            including account maintenance, game day information, scheduling
+            changes, and certain promotions via phone call and text message. By
+            providing a phone number and signing below, you hereby consent to
+            receive informational, advertising, promotional, telemarketing, and
+            other communications (phone calls and text messages) from or on
+            behalf of the HEAT at the provided telephone number, including, but
+            not limited to, telemarketing communications sent by an automatic
+            telephone dialing system or using an artificial or prerecorded
+            voice. You confirm that the telephone number provided below is
+            registered to you and you agree to notify the HEAT in writing if you
+            change, transfer, drop, or otherwise surrender this phone number.
+            The HEAT will never sell your phone number and will not share your
+            phone number other than with those third parties with whom we
+            partner. You acknowledge that your consent to receive such
+            telemarketing and other communications is not a condition to receive
+            goods or services from the HEAT and that you may opt out of
+            receiving telemarketing and/or other communications at any time,
+            including by not providing a phone number below. If you provide a
+            telephone number to the HEAT after you opt out of receiving
+            telemarketing and/or other communications from the HEAT, you may
+            receive informational communications from the HEAT regarding your
+            account.
+          </p>
+        </div>
+      </article>
+
+      <!-- Automatic Payment Authorization -->
+      <article class="content__terms container">
+        <h3 class="terms__title">
+          Automatic Payment Authorization:
+        </h3>
+        <div class="terms__content justify-content">
+          <p>
+            I authorize the HEAT to automatically charge my credit card, or ACH
+            Account, as I provided to the HEAT, per the terms and conditions set
+            forth herein and on my invoice and/or online order form, as
+            applicable for (i) the monthly payment amounts on the dates as
+            described herein, if I elect the monthly payment option, (ii) any
+            Playoff games as described herein, (iii) any returned payment fee,
+            and (iv) any accelerated payments I incur. I agree that no prior
+            notification will be provided unless the date or amount of a payment
+            changes, in which case notice will be provided ten (10) days in
+            advance of the payment. I understand that I may cancel this
+            authorization at any time by sending written notice to the HEAT at
+            AmericanAirlines Arena, 601 Biscayne Blvd. Miami, FL 33132, but such
+            cancellation does not relieve me of my payment obligations under
+            this agreement. This constitutes your copy of the recurring payment
+            authorization to the HEAT. Please retain a copy for your records. I
+            acknowledge that I have read and fully understand the foregoing.
+          </p>
+        </div>
+      </article>
+
+      <!-- Signature Section -->
+      <section class="content__signature">
+        <div class="signature__container container">
+          <div class="signature-name signature-inputs">
+            <input type="text" name="sign-name" value="" />
+            <hr />
+            Jane Williams
+          </div>
+          <div class="signature-date signature-inputs">
+            <input type="text" name="sign-date" value="" />
+            <hr />
+            Date
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
