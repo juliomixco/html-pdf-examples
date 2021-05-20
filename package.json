@@ -14,6 +14,6 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/pmancia/mh-pdf#readme",
   "dependencies": {
-    "html-pdf": "^2.2.0"
+    "html-pdf": "^3.0.1"
   }
 }
